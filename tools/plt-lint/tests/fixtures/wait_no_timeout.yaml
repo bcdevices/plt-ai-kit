@@ -1,0 +1,7 @@
+title: "wait must have a timeout step field"
+
+suite:
+  - ident: NO-TIMEOUT
+    title: "wait rejects at runtime if timeout is absent"
+    steps:
+      - command: wait

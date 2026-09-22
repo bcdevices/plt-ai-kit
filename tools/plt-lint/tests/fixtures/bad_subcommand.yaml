@@ -1,0 +1,7 @@
+title: "Bad sub-command"
+
+suite:
+  - ident: BAD-USB
+    title: "usb typo-goo is not a valid usb sub-command"
+    steps:
+      - command: usb typo-goo

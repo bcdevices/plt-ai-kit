@@ -1,0 +1,8 @@
+title: "Unknown command"
+
+suite:
+  - ident: BAD
+    title: "Uses a made-up command"
+    steps:
+      - command: doTheThing UART0
+        timeout: 1s

@@ -1,0 +1,7 @@
+title: "Hex payload byte out of range"
+
+suite:
+  - ident: BAD-HEX
+    title: "canSend byte 0x200 is bigger than int8"
+    steps:
+      - command: canSend CAN0 0x123 0x11 0x200

@@ -1,0 +1,7 @@
+title: "Bad CAN port"
+
+suite:
+  - ident: BAD-CAN
+    title: "canCfg with a bad port name"
+    steps:
+      - command: canCfg can0 500000

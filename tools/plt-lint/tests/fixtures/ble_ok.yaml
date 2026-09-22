@@ -1,0 +1,8 @@
+title: "BLE gatt sub-command valid"
+
+suite:
+  - ident: BLE-CONNECT
+    title: "ble gatt connect"
+    steps:
+      - command: ble gatt connect name:MyDevice 10 -70
+        timeout: 15s

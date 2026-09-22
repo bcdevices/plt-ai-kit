@@ -1,0 +1,8 @@
+title: "Minimal valid plan"
+
+suite:
+  - ident: BOOT
+    title: "Boot test"
+    steps:
+      - command: wait
+        timeout: 1s

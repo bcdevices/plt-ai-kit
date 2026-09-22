@@ -1,0 +1,10 @@
+title: "Quoted args are preserved as single tokens"
+
+suite:
+  - ident: QUOTED
+    title: "operator message with spaces"
+    steps:
+      - command: operator "Please insert the device"
+        timeout: 30s
+      - command: agentExec MYAGENT "echo hello world"
+        timeout: 5s

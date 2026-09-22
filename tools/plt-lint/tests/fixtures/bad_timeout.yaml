@@ -1,0 +1,8 @@
+title: "Bad timeout format"
+
+suite:
+  - ident: BAD-TIMEOUT
+    title: "wait requires timeout, and this one is malformed"
+    steps:
+      - command: wait
+        timeout: "five seconds"
