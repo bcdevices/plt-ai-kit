@@ -1,0 +1,1258 @@
+{
+   "$id": "https://pltcloud.com/test.plan-2.7.0.schema.json",
+   "$schema": "https://json-schema.org/draft/2020-12/schema",
+   "additionalProperties": true,
+   "description": "Production Line Tool Test Plan Schema, Version 2.7.0",
+   "properties": {
+      "bomRev": {
+         "description": "Test Report DUT Info 'bom_rev' Value",
+         "title": "BOM Rev",
+         "type": "string"
+      },
+      "calibration": {
+         "description": "Calibration section",
+         "items": {
+            "additionalProperties": true,
+            "description": "Calibration section",
+            "properties": {
+               "current": {
+                  "description": "Current draw offset",
+                  "title": "Current",
+                  "type": "string"
+               },
+               "current3V3": {
+                  "description": "3V3 Current draw offset",
+                  "title": "Current3V3",
+                  "type": "string"
+               },
+               "current5V": {
+                  "description": "5V Current draw offset",
+                  "title": "Current5V",
+                  "type": "string"
+               },
+               "currentVARV": {
+                  "description": "VARV Current draw offset",
+                  "title": "CurrentVARV",
+                  "type": "string"
+               },
+               "impedance": {
+                  "description": "Impedance offset",
+                  "title": "Impedance",
+                  "type": "string"
+               },
+               "ppc": {
+                  "description": "PPC Identifier",
+                  "title": "PPC",
+                  "type": "string"
+               },
+               "voltage": {
+                  "description": "Voltage offset",
+                  "title": "Voltage",
+                  "type": "string"
+               },
+               "voltageDATP07": {
+                  "description": "DATP07 Voltage offset",
+                  "title": "VoltageDATP07",
+                  "type": "string"
+               },
+               "voltageDATP08": {
+                  "description": "DATP08 Voltage offset",
+                  "title": "VoltageDATP08",
+                  "type": "string"
+               },
+               "voltageDATP09": {
+                  "description": "DATP09 Voltage offset",
+                  "title": "VoltageDATP09",
+                  "type": "string"
+               },
+               "voltageDATP10": {
+                  "description": "DATP10 Voltage offset",
+                  "title": "VoltageDATP10",
+                  "type": "string"
+               },
+               "voltageDATP11": {
+                  "description": "DATP11 Voltage offset",
+                  "title": "VoltageDATP11",
+                  "type": "string"
+               },
+               "voltageDATP12": {
+                  "description": "DATP12 Voltage offset",
+                  "title": "VoltageDATP12",
+                  "type": "string"
+               },
+               "voltageMUX0": {
+                  "description": "MUX0 Voltage offset",
+                  "title": "VoltageMUX0",
+                  "type": "string"
+               },
+               "voltageMUX1": {
+                  "description": "MUX1 Voltage offset",
+                  "title": "VoltageMUX1",
+                  "type": "string"
+               },
+               "voltageMUX2": {
+                  "description": "MUX2 Voltage offset",
+                  "title": "VoltageMUX2",
+                  "type": "string"
+               },
+               "voltageMUX3": {
+                  "description": "MUX3 Voltage offset",
+                  "title": "VoltageMUX3",
+                  "type": "string"
+               }
+            },
+            "title": "Calibration",
+            "type": "object"
+         },
+         "title": "Calibration",
+         "type": "array"
+      },
+      "dutProduct": {
+         "description": "Test Report DUT Info 'product' Value",
+         "title": "DUT Product",
+         "type": "string"
+      },
+      "dutVersion": {
+         "description": "Test Report DUT Info 'version' Value",
+         "title": "DUT Version",
+         "type": "string"
+      },
+      "identPrefix": {
+         "description": "Identifier Prefix Field",
+         "title": "Ident Prefix",
+         "type": "string"
+      },
+      "identprefix": {
+         "description": "Identifier Prefix Field",
+         "title": "Ident Prefix",
+         "type": "string"
+      },
+      "panel": {
+         "additionalProperties": true,
+         "properties": {
+            "agents": {
+               "description": "Panel Agents",
+               "items": {
+                  "additionalProperties": true,
+                  "properties": {
+                     "handle": {
+                        "anyOf": [
+                           {
+                              "description": "Agent Handle",
+                              "items": {
+                                 "type": "string"
+                              },
+                              "title": "Handle",
+                              "type": "array"
+                           },
+                           {
+                              "description": "Agent Handle",
+                              "title": "Handle",
+                              "type": "string"
+                           }
+                        ]
+                     },
+                     "id": {
+                        "anyOf": [
+                           {
+                              "description": "Agent ID",
+                              "items": {
+                                 "type": "string"
+                              },
+                              "title": "ID",
+                              "type": "array"
+                           },
+                           {
+                              "description": "Agent ID",
+                              "title": "ID",
+                              "type": "string"
+                           }
+                        ]
+                     },
+                     "interface": {
+                        "anyOf": [
+                           {
+                              "description": "Agent Path Interface",
+                              "items": {
+                                 "type": "string"
+                              },
+                              "title": "Path Interface",
+                              "type": "array"
+                           },
+                           {
+                              "description": "Agent Path Interface",
+                              "title": "Path Interface",
+                              "type": "string"
+                           }
+                        ]
+                     },
+                     "path": {
+                        "anyOf": [
+                           {
+                              "description": "Agent Path",
+                              "items": {
+                                 "type": "string"
+                              },
+                              "title": "Path",
+                              "type": "array"
+                           },
+                           {
+                              "description": "Agent Path",
+                              "title": "Path",
+                              "type": "string"
+                           }
+                        ]
+                     }
+                  },
+                  "type": "object"
+               },
+               "title": "Agents",
+               "type": "array"
+            },
+            "height": {
+               "description": "Number of DUTs in a panel column",
+               "title": "Panel Height",
+               "type": "integer"
+            },
+            "width": {
+               "description": "Number of DUTs in a panel row",
+               "title": "Panel Width",
+               "type": "integer"
+            }
+         },
+         "type": "object"
+      },
+      "panel-setup": {
+         "additionalProperties": true,
+         "description": "Panel Setup section",
+         "properties": {
+            "steps": {
+               "description": "Panel Setup Steps",
+               "items": {
+                  "additionalProperties": true,
+                  "description": "Test Plan Step",
+                  "properties": {
+                     "agent": {
+                        "description": "Agent handle of delegate",
+                        "title": "Agent",
+                        "type": "string"
+                     },
+                     "command": {
+                        "description": "Step Command Text",
+                        "title": "Command",
+                        "type": "string"
+                     },
+                     "expect": {
+                        "description": "Step Expect Field",
+                        "title": "Expect",
+                        "type": "string"
+                     },
+                     "extract": {
+                        "description": "Step Extract Field",
+                        "title": "Extract",
+                        "type": "string"
+                     },
+                     "extractKey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "extractkey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "fail": {
+                        "description": "Step Failure Title",
+                        "title": "Fail",
+                        "type": "string"
+                     },
+                     "ground": {
+                        "description": "Step Ground Reference Field",
+                        "title": "Ground",
+                        "type": "string"
+                     },
+                     "id": {
+                        "description": "Step ID Field",
+                        "title": "ID",
+                        "type": "string"
+                     },
+                     "ident": {
+                        "description": "Step Identifier",
+                        "title": "Ident",
+                        "type": "string"
+                     },
+                     "interface": {
+                        "description": "Step Path Interface Field",
+                        "title": "Interface",
+                        "type": "string"
+                     },
+                     "pack": {
+                        "description": "Step Pack Field",
+                        "title": "Pack",
+                        "type": "string"
+                     },
+                     "parent": {
+                        "description": "Defer to parent",
+                        "title": "Run on Parent",
+                        "type": "boolean"
+                     },
+                     "path": {
+                        "description": "Step Path Field",
+                        "title": "Path",
+                        "type": "string"
+                     },
+                     "retry": {
+                        "description": "Step Retry Count",
+                        "title": "Retry",
+                        "type": "integer"
+                     },
+                     "send": {
+                        "description": "Step Send Field",
+                        "title": "Send",
+                        "type": "string"
+                     },
+                     "target": {
+                        "description": "Step Target Field",
+                        "title": "Target",
+                        "type": "string"
+                     },
+                     "timeout": {
+                        "anyOf": [
+                           {
+                              "type": "string"
+                           },
+                           {
+                              "description": "Deprecated: Prefer using a string for this field.",
+                              "type": "integer"
+                           }
+                        ],
+                        "description": "Step Timeout Field",
+                        "title": "Timeout"
+                     },
+                     "timeoutMs": {
+                        "description": "Millisecond timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "timeoutms": {
+                        "description": "Millisecond Timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "title": {
+                        "description": "Step Title",
+                        "title": "Title",
+                        "type": "string"
+                     },
+                     "uartCmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "uartcmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "with": {
+                        "description": "Command Configuration",
+                        "items": {
+                           "type": "string"
+                        },
+                        "title": "With",
+                        "type": "array"
+                     }
+                  },
+                  "title": "Step",
+                  "type": "object"
+               },
+               "title": "Steps",
+               "type": "array"
+            }
+         },
+         "required": [
+            "steps"
+         ],
+         "title": "Panel Setup",
+         "type": "object"
+      },
+      "panel-teardown": {
+         "additionalProperties": true,
+         "description": "Panel Teardown section",
+         "properties": {
+            "steps": {
+               "description": "Panel Teardown Steps",
+               "items": {
+                  "additionalProperties": true,
+                  "description": "Test Plan Step",
+                  "properties": {
+                     "agent": {
+                        "description": "Agent handle of delegate",
+                        "title": "Agent",
+                        "type": "string"
+                     },
+                     "command": {
+                        "description": "Step Command Text",
+                        "title": "Command",
+                        "type": "string"
+                     },
+                     "expect": {
+                        "description": "Step Expect Field",
+                        "title": "Expect",
+                        "type": "string"
+                     },
+                     "extract": {
+                        "description": "Step Extract Field",
+                        "title": "Extract",
+                        "type": "string"
+                     },
+                     "extractKey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "extractkey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "fail": {
+                        "description": "Step Failure Title",
+                        "title": "Fail",
+                        "type": "string"
+                     },
+                     "ground": {
+                        "description": "Step Ground Reference Field",
+                        "title": "Ground",
+                        "type": "string"
+                     },
+                     "id": {
+                        "description": "Step ID Field",
+                        "title": "ID",
+                        "type": "string"
+                     },
+                     "ident": {
+                        "description": "Step Identifier",
+                        "title": "Ident",
+                        "type": "string"
+                     },
+                     "interface": {
+                        "description": "Step Path Interface Field",
+                        "title": "Interface",
+                        "type": "string"
+                     },
+                     "pack": {
+                        "description": "Step Pack Field",
+                        "title": "Pack",
+                        "type": "string"
+                     },
+                     "parent": {
+                        "description": "Defer to parent",
+                        "title": "Run on Parent",
+                        "type": "boolean"
+                     },
+                     "path": {
+                        "description": "Step Path Field",
+                        "title": "Path",
+                        "type": "string"
+                     },
+                     "retry": {
+                        "description": "Step Retry Count",
+                        "title": "Retry",
+                        "type": "integer"
+                     },
+                     "send": {
+                        "description": "Step Send Field",
+                        "title": "Send",
+                        "type": "string"
+                     },
+                     "target": {
+                        "description": "Step Target Field",
+                        "title": "Target",
+                        "type": "string"
+                     },
+                     "timeout": {
+                        "anyOf": [
+                           {
+                              "type": "string"
+                           },
+                           {
+                              "description": "Deprecated: Prefer using a string for this field.",
+                              "type": "integer"
+                           }
+                        ],
+                        "description": "Step Timeout Field",
+                        "title": "Timeout"
+                     },
+                     "timeoutMs": {
+                        "description": "Millisecond timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "timeoutms": {
+                        "description": "Millisecond Timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "title": {
+                        "description": "Step Title",
+                        "title": "Title",
+                        "type": "string"
+                     },
+                     "uartCmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "uartcmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "with": {
+                        "description": "Command Configuration",
+                        "items": {
+                           "type": "string"
+                        },
+                        "title": "With",
+                        "type": "array"
+                     }
+                  },
+                  "title": "Step",
+                  "type": "object"
+               },
+               "title": "Steps",
+               "type": "array"
+            }
+         },
+         "required": [
+            "steps"
+         ],
+         "title": "Panel Teardown",
+         "type": "object"
+      },
+      "runs-on": {
+         "additionalProperties": true,
+         "properties": {
+            "model": {
+               "anyOf": [
+                  {
+                     "description": "PLT Model",
+                     "items": {
+                        "type": "string"
+                     },
+                     "title": "Model",
+                     "type": "array"
+                  },
+                  {
+                     "description": "PLT Model",
+                     "title": "Model",
+                     "type": "string"
+                  }
+               ]
+            },
+            "ppc": {
+               "anyOf": [
+                  {
+                     "description": "PPC Identifier",
+                     "items": {
+                        "type": "string"
+                     },
+                     "title": "PPC",
+                     "type": "array"
+                  },
+                  {
+                     "description": "PPC Identifier",
+                     "title": "PPC",
+                     "type": "string"
+                  }
+               ]
+            },
+            "runner-version": {
+               "anyOf": [
+                  {
+                     "description": "PLT-OS Test Runner version",
+                     "items": {
+                        "type": "string"
+                     },
+                     "title": "Runner Version",
+                     "type": "array"
+                  },
+                  {
+                     "description": "PLT-OS Test Runner version",
+                     "title": "Runner Version",
+                     "type": "string"
+                  }
+               ]
+            },
+            "version": {
+               "anyOf": [
+                  {
+                     "description": "PLT Test Plan Commands Version",
+                     "items": {
+                        "type": "string"
+                     },
+                     "title": "Version",
+                     "type": "array"
+                  },
+                  {
+                     "description": "PLT Test Plan Commands Version",
+                     "title": "Version",
+                     "type": "string"
+                  }
+               ]
+            }
+         },
+         "type": "object"
+      },
+      "setup": {
+         "additionalProperties": true,
+         "description": "Setup section",
+         "properties": {
+            "steps": {
+               "description": "Setup Steps",
+               "items": {
+                  "additionalProperties": true,
+                  "description": "Test Plan Step",
+                  "properties": {
+                     "agent": {
+                        "description": "Agent handle of delegate",
+                        "title": "Agent",
+                        "type": "string"
+                     },
+                     "command": {
+                        "description": "Step Command Text",
+                        "title": "Command",
+                        "type": "string"
+                     },
+                     "expect": {
+                        "description": "Step Expect Field",
+                        "title": "Expect",
+                        "type": "string"
+                     },
+                     "extract": {
+                        "description": "Step Extract Field",
+                        "title": "Extract",
+                        "type": "string"
+                     },
+                     "extractKey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "extractkey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "fail": {
+                        "description": "Step Failure Title",
+                        "title": "Fail",
+                        "type": "string"
+                     },
+                     "ground": {
+                        "description": "Step Ground Reference Field",
+                        "title": "Ground",
+                        "type": "string"
+                     },
+                     "id": {
+                        "description": "Step ID Field",
+                        "title": "ID",
+                        "type": "string"
+                     },
+                     "ident": {
+                        "description": "Step Identifier",
+                        "title": "Ident",
+                        "type": "string"
+                     },
+                     "interface": {
+                        "description": "Step Path Interface Field",
+                        "title": "Interface",
+                        "type": "string"
+                     },
+                     "pack": {
+                        "description": "Step Pack Field",
+                        "title": "Pack",
+                        "type": "string"
+                     },
+                     "parent": {
+                        "description": "Defer to parent",
+                        "title": "Run on Parent",
+                        "type": "boolean"
+                     },
+                     "path": {
+                        "description": "Step Path Field",
+                        "title": "Path",
+                        "type": "string"
+                     },
+                     "retry": {
+                        "description": "Step Retry Count",
+                        "title": "Retry",
+                        "type": "integer"
+                     },
+                     "send": {
+                        "description": "Step Send Field",
+                        "title": "Send",
+                        "type": "string"
+                     },
+                     "target": {
+                        "description": "Step Target Field",
+                        "title": "Target",
+                        "type": "string"
+                     },
+                     "timeout": {
+                        "anyOf": [
+                           {
+                              "type": "string"
+                           },
+                           {
+                              "description": "Deprecated: Prefer using a string for this field.",
+                              "type": "integer"
+                           }
+                        ],
+                        "description": "Step Timeout Field",
+                        "title": "Timeout"
+                     },
+                     "timeoutMs": {
+                        "description": "Millisecond timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "timeoutms": {
+                        "description": "Millisecond Timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "title": {
+                        "description": "Step Title",
+                        "title": "Title",
+                        "type": "string"
+                     },
+                     "uartCmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "uartcmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "with": {
+                        "description": "Command Configuration",
+                        "items": {
+                           "type": "string"
+                        },
+                        "title": "With",
+                        "type": "array"
+                     }
+                  },
+                  "title": "Step",
+                  "type": "object"
+               },
+               "title": "Steps",
+               "type": "array"
+            }
+         },
+         "required": [
+            "steps"
+         ],
+         "title": "Setup",
+         "type": "object"
+      },
+      "suite": {
+         "description": "Test Plan Items",
+         "items": {
+            "additionalProperties": true,
+            "properties": {
+               "ident": {
+                  "description": "Item Identifier",
+                  "title": "Ident",
+                  "type": "string"
+               },
+               "retry": {
+                  "description": "Test Item Retry Count",
+                  "title": "Retry",
+                  "type": "integer"
+               },
+               "steps": {
+                  "description": "Test Plan Item Steps",
+                  "items": {
+                     "additionalProperties": true,
+                     "description": "Test Plan Step",
+                     "properties": {
+                        "agent": {
+                           "description": "Agent handle of delegate",
+                           "title": "Agent",
+                           "type": "string"
+                        },
+                        "command": {
+                           "description": "Step Command Text",
+                           "title": "Command",
+                           "type": "string"
+                        },
+                        "expect": {
+                           "description": "Step Expect Field",
+                           "title": "Expect",
+                           "type": "string"
+                        },
+                        "extract": {
+                           "description": "Step Extract Field",
+                           "title": "Extract",
+                           "type": "string"
+                        },
+                        "extractKey": {
+                           "description": "Step Extract Key Field",
+                           "title": "Extract Key",
+                           "type": "string"
+                        },
+                        "extractkey": {
+                           "description": "Step Extract Key Field",
+                           "title": "Extract Key",
+                           "type": "string"
+                        },
+                        "fail": {
+                           "description": "Step Failure Title",
+                           "title": "Fail",
+                           "type": "string"
+                        },
+                        "ground": {
+                           "description": "Step Ground Reference Field",
+                           "title": "Ground",
+                           "type": "string"
+                        },
+                        "id": {
+                           "description": "Step ID Field",
+                           "title": "ID",
+                           "type": "string"
+                        },
+                        "ident": {
+                           "description": "Step Identifier",
+                           "title": "Ident",
+                           "type": "string"
+                        },
+                        "interface": {
+                           "description": "Step Path Interface Field",
+                           "title": "Interface",
+                           "type": "string"
+                        },
+                        "pack": {
+                           "description": "Step Pack Field",
+                           "title": "Pack",
+                           "type": "string"
+                        },
+                        "parent": {
+                           "description": "Defer to parent",
+                           "title": "Run on Parent",
+                           "type": "boolean"
+                        },
+                        "path": {
+                           "description": "Step Path Field",
+                           "title": "Path",
+                           "type": "string"
+                        },
+                        "retry": {
+                           "description": "Step Retry Count",
+                           "title": "Retry",
+                           "type": "integer"
+                        },
+                        "send": {
+                           "description": "Step Send Field",
+                           "title": "Send",
+                           "type": "string"
+                        },
+                        "target": {
+                           "description": "Step Target Field",
+                           "title": "Target",
+                           "type": "string"
+                        },
+                        "timeout": {
+                           "anyOf": [
+                              {
+                                 "type": "string"
+                              },
+                              {
+                                 "description": "Deprecated: Prefer using a string for this field.",
+                                 "type": "integer"
+                              }
+                           ],
+                           "description": "Step Timeout Field",
+                           "title": "Timeout"
+                        },
+                        "timeoutMs": {
+                           "description": "Millisecond timeout (deprecated)",
+                           "title": "Timeout Ms",
+                           "type": "integer"
+                        },
+                        "timeoutms": {
+                           "description": "Millisecond Timeout (deprecated)",
+                           "title": "Timeout Ms",
+                           "type": "integer"
+                        },
+                        "title": {
+                           "description": "Step Title",
+                           "title": "Title",
+                           "type": "string"
+                        },
+                        "uartCmd": {
+                           "description": "Step UART Command Text (deprecated)",
+                           "title": "Uart Cmd",
+                           "type": "string"
+                        },
+                        "uartcmd": {
+                           "description": "Step UART Command Text (deprecated)",
+                           "title": "Uart Cmd",
+                           "type": "string"
+                        },
+                        "with": {
+                           "description": "Command Configuration",
+                           "items": {
+                              "type": "string"
+                           },
+                           "title": "With",
+                           "type": "array"
+                        }
+                     },
+                     "title": "Step",
+                     "type": "object"
+                  },
+                  "title": "Steps",
+                  "type": "array"
+               },
+               "title": {
+                  "description": "Test Item title",
+                  "title": "Title",
+                  "type": "string"
+               }
+            },
+            "required": [
+               "steps"
+            ],
+            "type": "object"
+         },
+         "title": "Suite",
+         "type": "array"
+      },
+      "teardown": {
+         "additionalProperties": true,
+         "description": "Teardown section",
+         "properties": {
+            "steps": {
+               "description": "Teardown Steps",
+               "items": {
+                  "additionalProperties": true,
+                  "description": "Test Plan Step",
+                  "properties": {
+                     "agent": {
+                        "description": "Agent handle of delegate",
+                        "title": "Agent",
+                        "type": "string"
+                     },
+                     "command": {
+                        "description": "Step Command Text",
+                        "title": "Command",
+                        "type": "string"
+                     },
+                     "expect": {
+                        "description": "Step Expect Field",
+                        "title": "Expect",
+                        "type": "string"
+                     },
+                     "extract": {
+                        "description": "Step Extract Field",
+                        "title": "Extract",
+                        "type": "string"
+                     },
+                     "extractKey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "extractkey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "fail": {
+                        "description": "Step Failure Title",
+                        "title": "Fail",
+                        "type": "string"
+                     },
+                     "ground": {
+                        "description": "Step Ground Reference Field",
+                        "title": "Ground",
+                        "type": "string"
+                     },
+                     "id": {
+                        "description": "Step ID Field",
+                        "title": "ID",
+                        "type": "string"
+                     },
+                     "ident": {
+                        "description": "Step Identifier",
+                        "title": "Ident",
+                        "type": "string"
+                     },
+                     "interface": {
+                        "description": "Step Path Interface Field",
+                        "title": "Interface",
+                        "type": "string"
+                     },
+                     "pack": {
+                        "description": "Step Pack Field",
+                        "title": "Pack",
+                        "type": "string"
+                     },
+                     "parent": {
+                        "description": "Defer to parent",
+                        "title": "Run on Parent",
+                        "type": "boolean"
+                     },
+                     "path": {
+                        "description": "Step Path Field",
+                        "title": "Path",
+                        "type": "string"
+                     },
+                     "retry": {
+                        "description": "Step Retry Count",
+                        "title": "Retry",
+                        "type": "integer"
+                     },
+                     "send": {
+                        "description": "Step Send Field",
+                        "title": "Send",
+                        "type": "string"
+                     },
+                     "target": {
+                        "description": "Step Target Field",
+                        "title": "Target",
+                        "type": "string"
+                     },
+                     "timeout": {
+                        "anyOf": [
+                           {
+                              "type": "string"
+                           },
+                           {
+                              "description": "Deprecated: Prefer using a string for this field.",
+                              "type": "integer"
+                           }
+                        ],
+                        "description": "Step Timeout Field",
+                        "title": "Timeout"
+                     },
+                     "timeoutMs": {
+                        "description": "Millisecond timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "timeoutms": {
+                        "description": "Millisecond Timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "title": {
+                        "description": "Step Title",
+                        "title": "Title",
+                        "type": "string"
+                     },
+                     "uartCmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "uartcmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "with": {
+                        "description": "Command Configuration",
+                        "items": {
+                           "type": "string"
+                        },
+                        "title": "With",
+                        "type": "array"
+                     }
+                  },
+                  "title": "Step",
+                  "type": "object"
+               },
+               "title": "Steps",
+               "type": "array"
+            }
+         },
+         "required": [
+            "steps"
+         ],
+         "title": "Teardown",
+         "type": "object"
+      },
+      "title": {
+         "description": "Test Plan Title",
+         "title": "Title",
+         "type": "string"
+      },
+      "trigger": {
+         "additionalProperties": true,
+         "description": "Trigger section",
+         "properties": {
+            "steps": {
+               "description": "Trigger Steps",
+               "items": {
+                  "additionalProperties": true,
+                  "description": "Test Plan Step",
+                  "properties": {
+                     "agent": {
+                        "description": "Agent handle of delegate",
+                        "title": "Agent",
+                        "type": "string"
+                     },
+                     "command": {
+                        "description": "Step Command Text",
+                        "title": "Command",
+                        "type": "string"
+                     },
+                     "expect": {
+                        "description": "Step Expect Field",
+                        "title": "Expect",
+                        "type": "string"
+                     },
+                     "extract": {
+                        "description": "Step Extract Field",
+                        "title": "Extract",
+                        "type": "string"
+                     },
+                     "extractKey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "extractkey": {
+                        "description": "Step Extract Key Field",
+                        "title": "Extract Key",
+                        "type": "string"
+                     },
+                     "fail": {
+                        "description": "Step Failure Title",
+                        "title": "Fail",
+                        "type": "string"
+                     },
+                     "ground": {
+                        "description": "Step Ground Reference Field",
+                        "title": "Ground",
+                        "type": "string"
+                     },
+                     "id": {
+                        "description": "Step ID Field",
+                        "title": "ID",
+                        "type": "string"
+                     },
+                     "ident": {
+                        "description": "Step Identifier",
+                        "title": "Ident",
+                        "type": "string"
+                     },
+                     "interface": {
+                        "description": "Step Path Interface Field",
+                        "title": "Interface",
+                        "type": "string"
+                     },
+                     "pack": {
+                        "description": "Step Pack Field",
+                        "title": "Pack",
+                        "type": "string"
+                     },
+                     "parent": {
+                        "description": "Defer to parent",
+                        "title": "Run on Parent",
+                        "type": "boolean"
+                     },
+                     "path": {
+                        "description": "Step Path Field",
+                        "title": "Path",
+                        "type": "string"
+                     },
+                     "retry": {
+                        "description": "Step Retry Count",
+                        "title": "Retry",
+                        "type": "integer"
+                     },
+                     "send": {
+                        "description": "Step Send Field",
+                        "title": "Send",
+                        "type": "string"
+                     },
+                     "target": {
+                        "description": "Step Target Field",
+                        "title": "Target",
+                        "type": "string"
+                     },
+                     "timeout": {
+                        "anyOf": [
+                           {
+                              "type": "string"
+                           },
+                           {
+                              "description": "Deprecated: Prefer using a string for this field.",
+                              "type": "integer"
+                           }
+                        ],
+                        "description": "Step Timeout Field",
+                        "title": "Timeout"
+                     },
+                     "timeoutMs": {
+                        "description": "Millisecond timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "timeoutms": {
+                        "description": "Millisecond Timeout (deprecated)",
+                        "title": "Timeout Ms",
+                        "type": "integer"
+                     },
+                     "title": {
+                        "description": "Step Title",
+                        "title": "Title",
+                        "type": "string"
+                     },
+                     "uartCmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "uartcmd": {
+                        "description": "Step UART Command Text (deprecated)",
+                        "title": "Uart Cmd",
+                        "type": "string"
+                     },
+                     "with": {
+                        "description": "Command Configuration",
+                        "items": {
+                           "type": "string"
+                        },
+                        "title": "With",
+                        "type": "array"
+                     }
+                  },
+                  "title": "Step",
+                  "type": "object"
+               },
+               "title": "Steps",
+               "type": "array"
+            }
+         },
+         "required": [
+            "steps"
+         ],
+         "title": "Trigger",
+         "type": "object"
+      }
+   },
+   "required": [
+      "suite"
+   ],
+   "title": "PLT Test Plan",
+   "type": "object"
+}
