@@ -6,13 +6,13 @@
     "name": "Blue Clover Devices",
     "url": "https://github.com/bcdevices/bcd-agent-kit"
   },
-  "homepage": "https://github.com/blueclover/bcd-agent-kit",
+  "homepage": "https://github.com/bcdevices/bcd-agent-kit",
   "license": "MIT",
   "keywords": [
     "bcd",
     "blue-clover-devices",
     "plt",
-    "manufacturing-test",
+    "manufacturing-test"
   ],
   "skills": "./skills",
   "mcpServers": "./mcp/mcp.json"
