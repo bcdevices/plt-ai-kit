@@ -6,10 +6,16 @@ This repository is structured as a **Claude Code plugin** and can be installed d
 
 ## Install
 
+The bundled plt-lint tool requires `python3` with PyYAML:
+
+```
+python3 -m pip install pyyaml
+```
+
 Add this repository as a marketplace in Claude Code, then install the plugin:
 
 ```
-/plugin marketplace add blueclover/bcd-agent-kit
+/plugin marketplace add bcdevices/bcd-agent-kit
 /plugin install bcd-agent-kit@bcd-agent-kit
 ```
 
@@ -18,4 +24,13 @@ Or, if you're using a local checkout:
 ```
 /plugin marketplace add /path/to/bcd-agent-kit
 /plugin install bcd-agent-kit@bcd-agent-kit
+```
+
+## Update
+
+Refresh the marketplace, then update the plugin and restart Claude Code:
+
+```
+/plugin marketplace update bcd-agent-kit
+/plugin update bcd-agent-kit@bcd-agent-kit
 ```
