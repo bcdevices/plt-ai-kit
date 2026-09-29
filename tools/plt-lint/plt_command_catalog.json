@@ -1,0 +1,1160 @@
+{
+  "schema_version": "1",
+  "step_fields": [
+    "command",
+    "expect",
+    "extract",
+    "extractKey",
+    "extractkey",
+    "fail",
+    "ground",
+    "id",
+    "ident",
+    "if",
+    "interface",
+    "pack",
+    "path",
+    "retry",
+    "send",
+    "target",
+    "timeout",
+    "timeoutms",
+    "timeoutMs",
+    "title",
+    "uartcmd",
+    "uartCmd",
+    "with",
+    "parent",
+    "agent"
+  ],
+  "power_rails": [
+    "1V8",
+    "3V3",
+    "5V",
+    "VARV",
+    "12V",
+    "24V",
+    "SWD",
+    "JTAG",
+    "UART0",
+    "UART1"
+  ],
+  "uart_ports": [
+    "UART0",
+    "UART1"
+  ],
+  "commands": [
+    {
+      "name": "agentCfg",
+      "description": "Configure Agent",
+      "usage": "agentCfg <handle> [UARTx]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "handle",
+          "type": "agentHandle"
+        },
+        {
+          "name": "port",
+          "type": "uartPort",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "path",
+        "id",
+        "interface",
+        "timeout",
+        "with"
+      ]
+    },
+    {
+      "name": "agentExec",
+      "description": "Execute Shell Command through Agent",
+      "usage": "agentExec <handle> <command>",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "handle",
+          "type": "agentHandle"
+        },
+        {
+          "name": "command",
+          "type": "string",
+          "variadic": true
+        }
+      ],
+      "allowed_params": [
+        "expect",
+        "extract",
+        "extractKey",
+        "timeout"
+      ]
+    },
+    {
+      "name": "agentFetch",
+      "description": "Fetch one or more files from Agent",
+      "usage": "agentFetch <handle> [with: <srcPath> ...] [extractKey: <key> ...]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "handle",
+          "type": "agentHandle"
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "extractKey",
+        "timeout"
+      ],
+      "require_params": [
+        "with"
+      ]
+    },
+    {
+      "name": "avrdude",
+      "description": "Direct AVRDude control",
+      "usage": "avrdude <target>",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "target",
+          "type": "string"
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "target",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "ble",
+      "description": "GATT-level BLE interactions with the DUT",
+      "usage": "ble gatt connect addr:<address> [<timeout> [<minRSSI>]]",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "gatt",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "action",
+              "type": "string",
+              "enum": [
+                "connect",
+                "disconnect",
+                "discover",
+                "match",
+                "read",
+                "sub",
+                "write"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "test",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "action",
+              "type": "string",
+              "enum": [
+                "xmit",
+                "recv",
+                "stop"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bledis",
+      "description": "Establishes a BLE connection to the DUT and discovers GATT services.",
+      "usage": "bledis %BLEMAC%|<name> [<timeoutSeconds> [<minRSSI>]]",
+      "min_args": 0,
+      "args": [
+        {
+          "name": "id",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "timeoutSeconds",
+          "type": "uint",
+          "optional": true
+        },
+        {
+          "name": "minRSSI",
+          "type": "int16",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "name": "canCfg",
+      "description": "Configure CAN interface",
+      "usage": "canCfg CANx <bitrate> [fd]",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "canPort"
+        },
+        {
+          "name": "bitrate",
+          "type": "int32"
+        },
+        {
+          "name": "fd",
+          "type": "string",
+          "optional": true,
+          "enum": [
+            "fd"
+          ]
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "canClear",
+      "description": "Clear CAN messages",
+      "usage": "canClear CANx",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "port",
+          "type": "canPort"
+        }
+      ]
+    },
+    {
+      "name": "canMatch",
+      "description": "Await matching CAN message",
+      "usage": "canMatch CANx <msgId> [<b0> ...]",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "canPort"
+        },
+        {
+          "name": "msgId",
+          "type": "uint32"
+        },
+        {
+          "name": "payload",
+          "type": "hexByte",
+          "variadic": true,
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "timeout",
+        "expect",
+        "extract",
+        "extractKey"
+      ]
+    },
+    {
+      "name": "canRequest",
+      "description": "Request CAN message (RTR)",
+      "usage": "canRequest CANx <msgId>",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "canPort"
+        },
+        {
+          "name": "msgId",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "canSend",
+      "description": "Send CAN message",
+      "usage": "canSend CANx <msgId> <b0> ... [nofd]",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "canPort"
+        },
+        {
+          "name": "msgId",
+          "type": "uint32"
+        },
+        {
+          "name": "payload",
+          "type": "hexByte",
+          "variadic": true,
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "timeout"
+      ]
+    },
+    {
+      "name": "define",
+      "description": "Define user key",
+      "usage": "define <key> <value>",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "download",
+      "description": "Download a file",
+      "usage": "download url file_name sha256sum <key_name>",
+      "min_args": 3,
+      "args": [
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "file_name",
+          "type": "string"
+        },
+        {
+          "name": "sha256sum",
+          "type": "string"
+        },
+        {
+          "name": "key_name",
+          "type": "string",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "name": "erase",
+      "description": "Erase DUT MCU on-board flash",
+      "usage": "erase <target> [UART0|UART1]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "port",
+          "type": "uartPort",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "pack",
+        "target",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "eval",
+      "description": "Evaluate expression",
+      "usage": "eval <expression>",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "expression",
+          "type": "string",
+          "variadic": true
+        }
+      ]
+    },
+    {
+      "name": "extflash_write",
+      "description": "Write Peripheral Flash",
+      "usage": "extflash_write UART0|UART1 <filename>",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "filename",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "freq",
+      "description": "Set the channel to use for frequency measurements",
+      "usage": "freq 0|1",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "channel",
+          "type": "int",
+          "enum": [
+            "0",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ground",
+      "description": "Select which DUT GNDx signals should be used as GND",
+      "usage": "ground none|<range>|all",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "range",
+          "type": "groundRange"
+        }
+      ]
+    },
+    {
+      "name": "identify",
+      "description": "Identify DUT MCU and/or RF peripherals",
+      "usage": "identify <target> [UART0|UART1]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "port",
+          "type": "uartPort",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "target",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "image",
+      "description": "Set background image",
+      "usage": "image set <filename> | image clear",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "set",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "filename",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "clear",
+          "min_args": 1
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "description": "Set Label Substitutions",
+      "usage": "label keys <key> [<key>...]",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "keys",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "key",
+              "type": "string",
+              "variadic": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "measure",
+      "description": "Probe Measurement",
+      "usage": "measure <channel> [<signal>] <range> [<reference>]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "channel",
+          "type": "string"
+        },
+        {
+          "name": "signal_or_range",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "range_or_ref",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "reference",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "expect",
+        "extract",
+        "extractKey",
+        "timeout",
+        "ground",
+        "pack",
+        "with"
+      ]
+    },
+    {
+      "name": "mux",
+      "description": "Select a probe or signal for a multiplex channel",
+      "usage": "mux <channel> <signal> | mux connect|disconnect all|<signal>",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "channel_or_action",
+          "type": "string"
+        },
+        {
+          "name": "signal",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "nfc",
+      "description": "Manipulate NFC cards",
+      "usage": "nfc write <TAGTYPE> <payload>...",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "write",
+          "min_args": 3,
+          "args": [
+            {
+              "name": "tag_type",
+              "type": "string"
+            },
+            {
+              "name": "payload",
+              "type": "string",
+              "variadic": true
+            }
+          ]
+        },
+        {
+          "name": "ntag-detect",
+          "min_args": 1
+        }
+      ]
+    },
+    {
+      "name": "openocd",
+      "description": "Direct OpenOCD control",
+      "usage": "openocd <target>",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "target",
+          "type": "string"
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "target",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "operator",
+      "description": "Instruct operator to perform a manual test step.",
+      "usage": "operator <message>",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "message",
+          "type": "string",
+          "variadic": true
+        }
+      ],
+      "allowed_params": [
+        "timeout"
+      ]
+    },
+    {
+      "name": "pin",
+      "description": "Configure a Digital probe.",
+      "usage": "pin <probe> input [pullup] | pin <probe> output [low|high]",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "probe",
+          "type": "string"
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "enum": [
+            "input",
+            "output"
+          ]
+        },
+        {
+          "name": "config",
+          "type": "string",
+          "optional": true,
+          "enum": [
+            "pullup",
+            "low",
+            "high"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "power",
+      "description": "Control power applied to the DUT",
+      "usage": "power off | power <rail> [on|off|<level>]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "rail_or_off",
+          "type": "powerRailOrOff"
+        },
+        {
+          "name": "state_or_level",
+          "type": "powerStateOrLevel",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "name": "program",
+      "description": "Erase and Program DUT MCU on-board flash",
+      "usage": "program <target> [UART0|UART1] [offset1:]<img1>,[offset2:]<img2>,...[,noerase]",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "port_or_images",
+          "type": "string"
+        },
+        {
+          "name": "images_or_noerase",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "noerase",
+          "type": "string",
+          "optional": true,
+          "enum": [
+            "noerase"
+          ]
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "pack",
+        "target",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "resume",
+      "description": "Control resume behavior.",
+      "usage": "resume on|off",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "state",
+          "type": "string",
+          "enum": [
+            "on",
+            "off"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scan",
+      "description": "Scan Barcode",
+      "usage": "scan <format>",
+      "min_args": 0,
+      "args": [
+        {
+          "name": "format",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "expect",
+        "extract",
+        "extractKey",
+        "with",
+        "timeout"
+      ]
+    },
+    {
+      "name": "scpi",
+      "description": "SCPI interaction",
+      "usage": "scpi connect <handle> | scpi query|command <handle> [<msg>]",
+      "min_args": 2,
+      "subcommands": [
+        {
+          "name": "connect",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "handle",
+              "type": "scpiHandle"
+            }
+          ]
+        },
+        {
+          "name": "query",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "handle",
+              "type": "scpiHandle"
+            },
+            {
+              "name": "msg",
+              "type": "string",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "command",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "handle",
+              "type": "scpiHandle"
+            },
+            {
+              "name": "msg",
+              "type": "string",
+              "optional": true
+            }
+          ]
+        }
+      ],
+      "allowed_params": [
+        "path",
+        "id",
+        "interface",
+        "with",
+        "timeout"
+      ]
+    },
+    {
+      "name": "serial",
+      "description": "Request a serial number through PLTcloud",
+      "usage": "serial request [<KEY>:<jsonKey>]... | serial set <value>",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "request",
+          "min_args": 1,
+          "args": [
+            {
+              "name": "key_map",
+              "type": "string",
+              "variadic": true,
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "set",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "value",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "short",
+      "description": "Connect Multiplex channels",
+      "usage": "short <muxA> <muxB> set|release",
+      "min_args": 3,
+      "args": [
+        {
+          "name": "muxA",
+          "type": "int"
+        },
+        {
+          "name": "muxB",
+          "type": "int"
+        },
+        {
+          "name": "action",
+          "type": "string",
+          "enum": [
+            "set",
+            "release"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sleepms",
+      "description": "Temporarily suspend test suite execution. (deprecated, use 'wait')",
+      "usage": "sleepms [<durationMs>] [<msg>]",
+      "min_args": 0,
+      "args": [
+        {
+          "name": "durationMs_or_msg",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "msg",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "timeout"
+      ]
+    },
+    {
+      "name": "store",
+      "description": "Store file.",
+      "usage": "store <KEY>",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "key",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "uart",
+      "description": "UART interaction",
+      "usage": "uart UARTx [noflush]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "noflush",
+          "type": "string",
+          "optional": true,
+          "enum": [
+            "noflush"
+          ]
+        }
+      ],
+      "allowed_params": [
+        "send",
+        "expect",
+        "extract",
+        "extractKey",
+        "timeout"
+      ]
+    },
+    {
+      "name": "uartAwait",
+      "description": "Await any UART response",
+      "usage": "uartAwait UARTx [<seconds>]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "seconds",
+          "type": "uint",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "timeout"
+      ]
+    },
+    {
+      "name": "uartBreak",
+      "description": "Control UART Break",
+      "usage": "uartBreak UARTx [on|off|<durationMs>]",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "state_or_durationMs",
+          "type": "uartBreakState"
+        }
+      ]
+    },
+    {
+      "name": "uartCfg",
+      "description": "Configure a UART port",
+      "usage": "uartCfg UART0|UART1 <speed> [<triplet>] | uartCfg UART0 tp",
+      "min_args": 2,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "speed_or_tp",
+          "type": "uartSpeedOrTp"
+        },
+        {
+          "name": "triplet",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "flow",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "with",
+        "path",
+        "id",
+        "interface",
+        "timeout"
+      ]
+    },
+    {
+      "name": "uartExpect",
+      "description": "Set a UART response to wait for with the ``uartAwait`` command",
+      "usage": "uartExpect UART0|UART1 [<expect>] [noflush]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "expect_or_noflush",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "noflush",
+          "type": "string",
+          "optional": true,
+          "enum": [
+            "noflush"
+          ]
+        }
+      ],
+      "allowed_params": [
+        "expect"
+      ]
+    },
+    {
+      "name": "uartReadTimeout",
+      "description": "Test if nothing is received from UART",
+      "usage": "uartReadTimeout UART0|UART1 [<seconds> [<sendText>]]",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "port",
+          "type": "uartPort"
+        },
+        {
+          "name": "seconds",
+          "type": "uint",
+          "optional": true
+        },
+        {
+          "name": "sendText",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "allowed_params": [
+        "send",
+        "timeout"
+      ]
+    },
+    {
+      "name": "usb",
+      "description": "USB interaction",
+      "usage": "usb detect | usb power on|off | usb reset | usb storage mount|unmount|write|read <handle> ...",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "detect",
+          "min_args": 1
+        },
+        {
+          "name": "control",
+          "min_args": 1,
+          "args": [
+            {
+              "name": "payload",
+              "type": "hexByte",
+              "variadic": true,
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "power",
+          "min_args": 2,
+          "args": [
+            {
+              "name": "state",
+              "type": "string",
+              "enum": [
+                "on",
+                "off"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "reset",
+          "min_args": 1
+        },
+        {
+          "name": "storage",
+          "min_args": 3,
+          "args": [
+            {
+              "name": "action",
+              "type": "string",
+              "enum": [
+                "mount",
+                "unmount",
+                "write",
+                "read"
+              ]
+            },
+            {
+              "name": "handle",
+              "type": "storageHandle"
+            },
+            {
+              "name": "rest",
+              "type": "string",
+              "variadic": true,
+              "optional": true
+            }
+          ]
+        }
+      ],
+      "allowed_params": [
+        "path",
+        "id",
+        "interface",
+        "with",
+        "timeout"
+      ]
+    },
+    {
+      "name": "value",
+      "description": "Parse value",
+      "usage": "value <key name>",
+      "min_args": 1,
+      "args": [
+        {
+          "name": "key_name",
+          "type": "string"
+        }
+      ],
+      "allowed_params": [
+        "expect",
+        "extract"
+      ]
+    },
+    {
+      "name": "wait",
+      "description": "Temporarily suspend test suite execution.",
+      "usage": "wait [<msg>]",
+      "min_args": 0,
+      "args": [
+        {
+          "name": "msg",
+          "type": "string",
+          "optional": true,
+          "variadic": true
+        }
+      ],
+      "allowed_params": [
+        "timeout"
+      ],
+      "require_params": [
+        "timeout"
+      ]
+    },
+    {
+      "name": "webhook",
+      "description": "Call API webhook through PLTcloud",
+      "usage": "webhook request [<KEY>:<jsonKey>]...",
+      "min_args": 1,
+      "subcommands": [
+        {
+          "name": "request",
+          "min_args": 1,
+          "args": [
+            {
+              "name": "key_map",
+              "type": "string",
+              "variadic": true,
+              "optional": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
