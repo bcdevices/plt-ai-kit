@@ -4,6 +4,7 @@
     "name": "Blue Clover Devices",
     "url": "https://github.com/bcdevices/bcd-agent-kit"
   },
+  "description": "Agent skills, MCP server specs, supporting tooling, and plugin information for using coding and chat agents to drive Blue Clover Devices systems.",
   "plugins": [
     {
       "name": "bcd-agent-kit",
