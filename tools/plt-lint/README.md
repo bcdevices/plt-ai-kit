@@ -31,6 +31,9 @@ For every step in `setup`, `panel-setup`, `trigger`, `suite`,
    silently discards it.
 
 Every check that names a specific command is driven by `plt_command_catalog.json`.
+The catalog is generated in the upstream plt-os repository and committed here
+as a static input. When PLT commands change upstream, copy in the regenerated
+catalog and commit it.
 
 ### Argument type reference
 
@@ -76,6 +79,7 @@ python3 plt_lint.py --json plan.yaml
 Exit codes:
 
 - `0`: success
-- `1`: an error was reported
-- `2`: command line invocation had an error or catalogue missing
+- `1`: an error was reported, or the catalog is missing or has an
+  unsupported `schema_version`
+- `2`: command line invocation had an error
 - `3`: PyYAML isn't installed.
