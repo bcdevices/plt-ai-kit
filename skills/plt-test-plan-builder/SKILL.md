@@ -141,7 +141,7 @@ teardown:
 ## Validating a plan
 
 Lint every plan you write or edit with **plt-lint** before handing it back,
-and fix what it reports. It ships in the bcd-agent-kit plugin:
+and fix what it reports. It ships in the plt-agent-kit plugin:
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/tools/plt-lint/plt_lint.py" --strict <plan>.yaml
@@ -157,7 +157,7 @@ that `if:` expressions evaluate, or anything that needs a real DUT — a clean
 lint is not a passing run.
 
 If plt-lint is not available (the skill was installed without the
-bcd-agent-kit plugin), fall back to the bundled JSON Schema at
+plt-agent-kit plugin), fall back to the bundled JSON Schema at
 `references/test.plan-2.7.0.schema.json` (schema version
 2.7.0) with any JSON Schema validator, plus `yamllint`.
 

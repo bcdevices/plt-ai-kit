@@ -15,15 +15,15 @@ python3 -m pip install pyyaml
 Add this repository as a marketplace in Claude Code, then install the plugin:
 
 ```
-/plugin marketplace add bcdevices/bcd-agent-kit
-/plugin install bcd-agent-kit@bcd-agent-kit
+/plugin marketplace add bcdevices/plt-agent-kit
+/plugin install plt-agent-kit@plt-agent-kit
 ```
 
 Or, if you're using a local checkout:
 
 ```
-/plugin marketplace add /path/to/bcd-agent-kit
-/plugin install bcd-agent-kit@bcd-agent-kit
+/plugin marketplace add /path/to/plt-agent-kit
+/plugin install plt-agent-kit@plt-agent-kit
 ```
 
 ## Update
@@ -31,6 +31,6 @@ Or, if you're using a local checkout:
 Refresh the marketplace, then update the plugin and restart Claude Code:
 
 ```
-/plugin marketplace update bcd-agent-kit
-/plugin update bcd-agent-kit@bcd-agent-kit
+/plugin marketplace update plt-agent-kit
+/plugin update plt-agent-kit@plt-agent-kit
 ```

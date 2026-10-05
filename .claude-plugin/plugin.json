@@ -1,12 +1,12 @@
 {
-  "name": "bcd-agent-kit",
+  "name": "plt-agent-kit",
   "version": "0.1.0",
   "description": "Blue Clover Devices agent toolkit: skills, tools, MCP server for coding and chat agents working on BCD projects.",
   "author": {
     "name": "Blue Clover Devices",
-    "url": "https://github.com/bcdevices/bcd-agent-kit"
+    "url": "https://github.com/bcdevices/plt-agent-kit"
   },
-  "homepage": "https://github.com/bcdevices/bcd-agent-kit",
+  "homepage": "https://github.com/bcdevices/plt-agent-kit",
   "license": "MIT",
   "keywords": [
     "bcd",
