@@ -12,7 +12,7 @@ plans; drop them into an item's `steps:`.
 
 | Interface | File |
 |---|---|
-| Identify, erase, program a target | `examples/programming.md` |
+| Program a target: Test Agent and Flashr (`flashr-flash`), or the built-in identify / erase / program | `examples/programming.md` |
 | UART send/expect/extract, expected timeouts | `examples/uart.md` |
 | CAN configure, send and match frames | `examples/can.md` |
 | BLE discovery, GATT, low-level testing | `examples/ble.md` |
@@ -30,7 +30,9 @@ plans; drop them into an item's `steps:`.
 ### What each plan demonstrates
 
 - **Program only** (`nucleo_f401re`): the identify / erase / program sequence
-  that begins almost every plan.
+  for the PLT's built-in programming interfaces. Stations with a Test Agent
+  and Flashr program with `flashr-flash` instead; see
+  `examples/programming.md`.
 - **Programming plus a functional test** (`stm32f4_disco` CAN sample):
   configures a CAN interface, programs the DUT, then matches CAN frames the
   DUT sends, capturing one with `extractKey`.

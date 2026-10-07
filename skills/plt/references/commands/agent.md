@@ -108,5 +108,5 @@ Execution differs by connection type:
 | `<retryCount>` | Optional: Number of times to retry the test step |
 | `<timeout>` | Optional: Timeout waiting for the command to complete, with suffix or in milliseconds (default: 1000ms). Applies to USB-CDC (UART) agents. |
 
-Examples: RPi Camera Module (`samples/ppcsbc/rpi-camera/`), Nordic nRF Util (`samples/ppcsbc/nordic-nrfutil/`)
-See also: `agentCfg`, Blue Clover Test Agent PER-101 (`peripheral/ta/per-101/`)
+Examples: RPi Camera Module (`samples/ppcsbc/rpi-camera/`), Nordic nRF Util (`samples/ppcsbc/nordic-nrfutil/`), flashr-flash - Program a target through Flashr (`agentOS/flashr-flash/`)
+See also: `agentCfg`, Blue Clover Test Agent PER-101 (`peripheral/ta/per-101/`), flashr-flash - Program a target through Flashr (`agentOS/flashr-flash/`)

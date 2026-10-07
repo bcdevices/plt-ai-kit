@@ -3,7 +3,7 @@ name: plt-cloud
 description: >-
   Reference for PLTcloud, the Blue Clover Devices cloud backend - web console administration, projects, releases and deployment groups, PLT connectivity, serial number and webhook APIs, webhook signature validation, CI upload, the Hardware CI GitHub App, the Report Connector and the Slack app. Use when the user asks about PLTcloud, deploying firmware or test plans to PLTs, test reports, or implementing a webhook endpoint. For commands and hardware info use plt; to write a plan use plt-test-plan-builder.
 metadata:
-  version: "20260415.0.1-21-ga5a80b0d7"
+  version: "20260415.0.1-32-gce6971592"
 ---
 
 # PLTcloud

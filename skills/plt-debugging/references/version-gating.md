@@ -1,6 +1,6 @@
 # Version Gating
 
-Features that require a specific pltOS or agentOS version (**New**, from
+Features that require a specific pltOS, agentOS or flashOS version (**New**, from
 `.. versionadded::` annotations in the documentation), and bugs fixed in a
 specific release (**Fixed**, from the release notes). If a step fails on a
 plan that works elsewhere, compare the PLT's version against this table: a
@@ -24,8 +24,14 @@ failure is not a known, fixed issue.
 | value | New | pltOS 2.0.30 | `TestPlanReference/command/value/` |
 | wait | New | pltOS 1.10.3 | `TestPlanReference/command/wait/` |
 | Conditional Execution (Test Plan YAML definition) | New | pltOS 2.2 | `TestPlanReference/yaml/` |
+| flashr-flash - Program a target through Flashr | New | agentOS 1.6.2 | `agentOS/flashr-flash/` |
+| flashr-update - Update Flashr firmware | New | agentOS 2.0.2 | `agentOS/flashr-update/` |
+| USB network interface (agentOS) | New | agentOS 2.0.2 | `agentOS/` |
 | Store-and-Forward (Edit Settings) | New | pltOS 2.3 | `pltcloud/webconsole/project/settings/basic/` |
+| PLTOS-475: Avoid stale UART FDs. Fix to avoid lingering stale open file descriptors for the UART devices for every test plan run. | Fixed | pltOS 3.0.7 | `releases/pltOS/3.0/` |
+| PLTOS-463: Fix in-app Power Off; boot with display on | Fixed | pltOS 3.0.6 | `releases/pltOS/3.0/` |
 | PLTOS-474: Fixed UART port detection when multiple USB-CDC devices were connected to the PLT-106 | Fixed | pltOS 3.0.5 | `releases/pltOS/3.0/` |
+| TGT-71: Fix openocd script error programming STM32L0 targets | Fixed | pltOS 2.4.13 | `releases/pltOS/2.4/` |
 | PLTOS-437: Interactive UI dialogs fail early Fixes regression introduced in pltos-2.2.6 | Fixed | pltOS 2.3.10 | `releases/pltOS/2.3/` |
 | PLTOS-437: Interactive UI dialogs fail early Fixes regression introduced in pltos-2.2.6 | Fixed | pltOS 2.2.10 | `releases/pltOS/2.2/` |
 | PLTOS-419: last result: Serial line cut off. Fix layout regression introduced in pltOS v2.0.41 related to initial support for Asian fonts. | Fixed | pltOS 2.1.21 | `releases/pltOS/2.1/` |
@@ -66,5 +72,6 @@ failure is not a known, fixed issue.
 | PLTOS-80: Backport UART Observer Fix | Fixed | pltOS 1.7.56 | `releases/pltOS/1.7/` |
 | PLTOS-29: Fix factory reset hang from PLTcloud | Fixed | pltOS 1.7.54 | `releases/pltOS/1.7/` |
 | LY11-525: Fix enrollment check interval | Fixed | pltOS 1.7.54 | `releases/pltOS/1.7/` |
+| Fix the GitHub Actions release build | Fixed | flashOS 0.6.1 | `releases/flashOS/0.6/` |
 | Fix sstate caching | Fixed | agentOS 2.0.0 | `releases/agentOS/2.0/` |
 | Fix USB MSC issues in AOS-6 Make the msc-host-handler more resilient during test plans executed on the PLT. Remove lines in the script that caused the USB port on the test agent to re-enumerate, which can cause the UART terminal on /dev/ttyGS0 to drop out. This appears to have led to failing test plans when the PLT occasionally failed to send follow up commands to the agent. | Fixed | agentOS 1.6.1 | `releases/agentOS/1.6/` |

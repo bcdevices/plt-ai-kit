@@ -3,7 +3,7 @@ name: plt-debugging
 description: >-
   Diagnose failures when running PLT (Production Line Tool) test plans on Blue Clover Devices hardware — measurement, programming, UART, CAN and power steps that fail or behave unexpectedly. Use when a PLT test step fails, a plan behaves unexpectedly, or the user asks why a PLT measurement or programming operation is not working. Not for writing a new plan (plt-test-plan-builder) or looking up what a command does (plt).
 metadata:
-  version: "20260415.0.1-21-ga5a80b0d7"
+  version: "20260415.0.1-32-gce6971592"
 ---
 
 # Debugging PLT Test Plans
@@ -28,14 +28,16 @@ failure modes, and which features need which PLT-OS version.
      tells you whether the problem is upstream (power, connection) or in the
      DUT.
    - `identify` — confirms the programming interface reaches the target. If
-     `identify` fails, stop suspecting the firmware image.
+     `identify` fails, stop suspecting the firmware image. When programming
+     through a Flashr, use the connection check in `references/flashr.md`
+     instead.
    - `pin` (read) — read a probe's state to confirm wiring and fixture
      contact.
    - `operator` — pause the run so a person can inspect the fixture at a
      specific point.
 5. **Match against known failure modes** in `references/failure-modes.md`.
-6. **Rule out a version mismatch.** Get the PLT's pltOS (and agentOS)
-   version, then check `references/version-gating.md` for a feature newer than
+6. **Rule out a version mismatch.** Get the PLT's pltOS (and agentOS or
+   flashOS) version, then check `references/version-gating.md` for a feature newer than
    it or a **Fixed** row matching the failure. Releases after this skill was
    built are at https://docs.pltcloud.com/releases/ . If the fix is in a newer release,
    the remedy is to update the PLT.
@@ -52,6 +54,7 @@ no gotchas file.
 |---|---|---|
 | `measure` / `freq` / `eval` / `value` | `references/by-command/measurement.md` | Ground reference, multiplexer routing, voltage limit. |
 | `program` / `identify` / `erase` | `references/by-command/programming.md` | Target power, programming interface, image path. |
+| `agentExec` running `flashr-flash` or `flashr-update` | `references/flashr.md` | Exit status, `timeout:`, target name, image path on the agent. |
 | `pin` / `short` / `mux` | `references/by-command/digital-io.md` | Probe routing and short-circuit checks. |
 | `power` / `ground` | `references/by-command/power.md` | Short-circuit and over-voltage checks before applying power; DUT ground selection. |
 | `uart*` / `ftdiCfg` | `references/by-command/serial.md` | `uartCfg` baud and framing before suspecting the DUT. |
@@ -89,7 +92,8 @@ limit for each is with the command's warning in
 |---|---|
 | `references/by-command/` | Every documented note and warning, per command, split by subsystem — one file per group, matching the `plt` skill's `references/commands/<subsystem>.md`. |
 | `references/failure-modes.md` | Catalogued failure modes: symptoms, diagnosis, remedies. |
-| `references/version-gating.md` | Which pltOS/agentOS version a feature needs, and which release fixed a bug. |
+| `references/flashr.md` | Programming through a Test Agent and Flashr: `flashr-flash` and `flashr-update` failures by exit status, and a connection check. |
+| `references/version-gating.md` | Which pltOS/agentOS/flashOS version a feature needs, and which release fixed a bug. |
 
 ## Full documentation
 

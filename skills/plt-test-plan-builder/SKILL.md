@@ -3,7 +3,7 @@ name: plt-test-plan-builder
 description: >-
   Create or modify Blue Clover Devices' PLT (Production Line Tool) test plans in YAML for Blue Clover. Use when writing or editing a test plan, structuring test steps, or when the user asks how to test a board, program a target, or measure a signal with a PLT. For command syntax detail and hardware limits it defers to the plt skill; for a failing step use plt-debugging.
 metadata:
-  version: "20260415.0.1-21-ga5a80b0d7"
+  version: "20260415.0.1-32-gce6971592"
 ---
 
 # Building PLT Test Plans
@@ -17,28 +17,25 @@ A plan has a `title:` and a `suite:` of test items. Each item has an `ident:`,
 a `title:`, and `steps:`. Each step runs one `command:`.
 
 ```yaml
-title: "Program: blinky sample"
+title: "Program DUT with Flashr"
 suite:
   - ident: DEV-T1
-    title: Identify DUT
+    title: Setup Test Agent
     steps:
-      - command: identify STM32F4_STLink
+      - command: agentCfg AGENT
+        with:
+          - firmware.hex
 
   - ident: DEV-T2
-    title: Erase STM32F4 through USB ST-Link
+    title: Program DUT
     steps:
-      - command: erase STM32F4_STLink
-
-  - ident: DEV-T3
-    title: Program STM32F4 through USB ST-Link
-    steps:
-      - command: program STM32F4_STLink zephyr-sample-blinky.hex
+      - command: agentExec AGENT "flashr-flash nrf52 /run/pltagent/mnt/firmware.hex"
+        timeout: 2m
         fail: "Check SWD wiring and target power"
 ```
 
-This is a real, working plan (`examples/suite-nucleo_f401re-blinky.yaml`). All
-items must pass for the plan to pass; a step fails the item if its command
-fails.
+All items must pass for the plan to pass; a step fails the item if its
+command fails.
 
 ### Step fields worth knowing
 
@@ -54,11 +51,34 @@ fails.
 The full envelope — every top-level key, item field, and step field — is
 defined by the JSON Schema, `references/test.plan-2.7.0.schema.json`.
 
+## Programming the DUT
+
+The main pattern is a Test Agent (PER-101) with a Flashr (PER-401), as
+above: `agentCfg` sends the image to the agent (`with:` files appear in
+`/run/pltagent/mnt`), then `agentExec` runs `flashr-flash <target>
+<firmwareFile> [<offset>]` there.
+
+- `<target>` is an OpenOCD target name (`nrf52`, `stm32f4x`), not a PLT
+  `program` target.
+- A `.bin` image needs the flash address as `<offset>`; `.hex` and `.elf`
+  must not have one.
+- Always set `timeout:`; the `agentExec` default is 1000 ms.
+- `flashr-flash` writes, verifies and resets, and a failure fails the step,
+  so no separate identify or erase step is needed.
+
+Details are in `examples/programming.md`; other tools on the agent are in
+the `plt` skill's `references/test-agent.md`.
+
+`identify` / `erase` / `program` drive the PLT's built-in programming
+interfaces instead; use them only when the station programs that way
+(`examples/suite-nucleo_f401re-blinky.yaml`).
+
 ## How to author a plan
 
 1. **Start from an example in the `examples/` directory.**
-2. **Identify the DUT first.** Almost every plan begins with `identify`, then
-   `erase`, then `program`. Get that working before adding tests.
+2. **Program the DUT first.** Almost every plan begins by programming
+   firmware; see "Programming the DUT" above. Get that working before
+   adding tests.
 3. Identify the commands needed. Look in the `plt` skill's `references/commands/`
    group files, which list every group and command with full syntax,
    arguments, notes, and warnings.
@@ -67,8 +87,8 @@ defined by the JSON Schema, `references/test.plan-2.7.0.schema.json`.
    A `fail:` should say what to do, not just that it
    failed — "check for D1 solder defect" beats "measurement failed".
 5. **Order steps cheapest and most diagnostic first.** An item fails at its
-   first failing step, so identify before program, safety checks before
-   power, and a quick sanity measurement before a long functional test.
+   first failing step, so safety checks before power, and a quick sanity
+   measurement before a long functional test.
 6. **Start acceptance ranges generous.** Tighten them once there is data from
    real units.
 7. **Lint.** Run plt-lint on the plan and fix every finding. See
@@ -141,7 +161,7 @@ teardown:
 ## Validating a plan
 
 Lint every plan you write or edit with **plt-lint** before handing it back,
-and fix what it reports. It ships in the plt-agent-kit plugin:
+and fix what it reports. It ships in the bcd-agent-kit plugin:
 
 ```
 python3 "${CLAUDE_PLUGIN_ROOT}/tools/plt-lint/plt_lint.py" --strict <plan>.yaml
@@ -157,7 +177,7 @@ that `if:` expressions evaluate, or anything that needs a real DUT — a clean
 lint is not a passing run.
 
 If plt-lint is not available (the skill was installed without the
-plt-agent-kit plugin), fall back to the bundled JSON Schema at
+bcd-agent-kit plugin), fall back to the bundled JSON Schema at
 `references/test.plan-2.7.0.schema.json` (schema version
 2.7.0) with any JSON Schema validator, plus `yamllint`.
 

@@ -18,6 +18,10 @@ Locates the instrument's USBTMC device and configures handle for use. If neither
   [id: <usbDeviceID>]
   [path: <usbDevicePath>]
   [interface: <usbDeviceInterface>]
+  [with:
+    - readTermination "<readTermination>"
+    - writeTermination "<writeTermination>"
+  ]
 ```
 
 | Argument | Description |
@@ -27,6 +31,7 @@ Locates the instrument's USBTMC device and configures handle for use. If neither
 | `<usbDeviceID>` | Optional: USB device identifiers: VID:PID. |
 | `<usbDevicePath>` | Optional: USB device path: port. … .port. |
 | `<usbDeviceInterface>` | Optional: USB device interface: interface_number. Selects a specific interface when the device exposes more than one. |
+| `<with>` | Optional: One or more SCPI configuration fields. Supported keys: readTermination "<readTermination>" — specifies the character or sequence of characters that signals the end of an incoming SCPI message (for example: "\r\n"). If readTermination is not specified, the PLT will return the first USBTMC response message, trimming any carriage return (\r) or newline (\n) characters. writeTermination "<writeTermination>" — specifies the character or sequence of characters that signals the end of an outgoing SCPI message. If writeTermination is not specified, the PLT will send a newline, followed by a NUL character (equivalent to writeTermination "\n\x00"). |
 
 ### `scpi command`
 

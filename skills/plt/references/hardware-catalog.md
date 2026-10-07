@@ -58,6 +58,7 @@ Peripherals and sample projects with their documentation pages. Load this when t
 - Microchip ATmega168PB Xplained Mini — `samples/board/atmega168pb_xmini/`
 - Microchip SAM E54 Xplained Pro — `samples/board/atsame54_xpro/`
 - Microchip SAM G55 Xplained Pro — `samples/board/atsamg55_xpro/`
+- Bento Board — `samples/board/bento/`
 - TI CC1352P7 Launchpad — `samples/board/cc1352p7_lp/`
 - TI CC1352R1 Launchpad — `samples/board/cc1352r1_launchxl/`
 - Infineon CY4532 CCG3PA Evaluation Kit — `samples/board/cy4532ezpd/`

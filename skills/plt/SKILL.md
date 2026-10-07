@@ -3,7 +3,7 @@ name: plt
 description: >-
   Reference for PLT (Production Line Tool) manufacturing test systems by Blue Clover Devices — every test plan command with its arguments and limits, PLT-106/200A/300A hardware, probes and signals, programming targets, and peripherals. Use when the user asks what a PLT command or argument does, which hardware, target or peripheral is supported, or mentions PLT, a DUT fixture, ICT or finished-goods test. For PLTcloud use plt-cloud; to write or edit a test plan use plt-test-plan-builder; to diagnose a failing step use plt-debugging.
 metadata:
-  version: "20260415.0.1-21-ga5a80b0d7"
+  version: "20260415.0.1-32-gce6971592"
 ---
 
 # PLT — Production Line Tool
@@ -17,10 +17,12 @@ Current generation products:
 
 - **PLT-106** — compact, current generation model. The PLT-106 is supported by
   additional BCD devices:
-  - **Flashr (PER-401)** — Blue Clover Devices USB-attached programmer for
-  flashing firmware to DUTs
-  - **Test Agent (PER-101)** — Blue Clover Devices USB-attached Single Board
-  Computer test-agent peripheral.
+  - **Test Agent (PER-101)** — USB-attached Single Board Computer running
+    agentOS. A plan sends it files with `agentCfg` and runs shell commands
+    on it with `agentExec`.
+  - **Flashr (PER-401)** — USB CMSIS-DAP (SWD) programmer running flashOS,
+    attached to a Test Agent. This is the main way to program a DUT: run
+    `flashr-flash` with `agentExec`, not the `program` command.
 
 Previous generations
 - **PLT-300A** — Added the multiplexer sub-system, DMM-based measurement,
@@ -121,7 +123,9 @@ space in a two-word name written as an underscore (`usb_storage`).
 |---|---|
 | Which group a command is in | The command list above |
 | Full syntax and arguments for a command | `references/commands/<group>.md` |
-| Which `target` names `program`, `erase` and `identify` accept, and every target documentation page | `references/targets.md` |
+| Programming a DUT through a Flashr (`flashr-flash`, `flashr-update`, OpenOCD, pyOCD) | `references/flashr.md` |
+| Test Agent setup; the tools and environment agentOS gives `agentExec` | `references/test-agent.md` |
+| Which `target` names `program`, `erase` and `identify` accept (the PLT's built-in programming interfaces), and every target documentation page | `references/targets.md` |
 | Top-level plan keys and step fields | the `plt-test-plan-builder` skill's `references/test.plan-2.7.0.schema.json` (JSON Schema) |
 | How-to guides for measurement, UART, CAN, BLE, NFC, USB, operator, fixture; plan YAML and keys; design for test | the `plt-test-plan-builder` skill's `references/` |
 | A specific peripheral or sample project | `references/hardware-catalog.md` |
@@ -149,8 +153,7 @@ page (path relative to https://docs.pltcloud.com/) when a question needs it:
 - PLT-300A and PLT-200A hardware references — `plt-300a/`, `plt-200a/`
 - PLT-106 overview — `plt-106/`
 - Probes and signals: PLT-200A/300A rails and test probes — `design/signals/`
-- agentOS, the Test Agent operating system — `agentOS/`
-- Release notes for pltOS and agentOS — `releases/`
+- Release notes for pltOS, agentOS and flashOS — `releases/`
 - Product policies (end-of-life, update patches) — `policies/`
 
 Dev-kit documentation — pinouts, jumper positions, ST-Link / SWD / DFU
