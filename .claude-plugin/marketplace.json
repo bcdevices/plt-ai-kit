@@ -10,7 +10,6 @@
       "name": "plt-agent-kit",
       "source": ".",
       "description": "Blue Clover Devices agent toolkit: skills, tools, MCP server for coding and chat agents working on BCD projects.",
-      "version": "0.1.1",
       "category": "engineering",
       "keywords": ["bcd", "plt", "manufacturing-test"]
     }
