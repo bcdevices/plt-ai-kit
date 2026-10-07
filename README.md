@@ -6,7 +6,7 @@ This repository is structured as a **Claude Code plugin** and can be installed d
 
 ## Install
 
-The bundled plt-lint tool requires `python3` with PyYAML:
+The plt-lint tool bundled with the plt-test-plan-builder skill requires `python3` with PyYAML:
 
 ```
 python3 -m pip install pyyaml

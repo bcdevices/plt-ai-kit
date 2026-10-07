@@ -161,10 +161,11 @@ teardown:
 ## Validating a plan
 
 Lint every plan you write or edit with **plt-lint** before handing it back,
-and fix what it reports. It ships in the bcd-agent-kit plugin:
+and fix what it reports. It found in `scripts/plt_lint.py`, next to its command
+catalog.
 
 ```
-python3 "${CLAUDE_PLUGIN_ROOT}/tools/plt-lint/plt_lint.py" --strict <plan>.yaml
+python3 <skill-dir>/scripts/plt_lint.py --strict <plan>.yaml
 ```
 
 - Exit `0` is clean; `1` means errors were reported. Exit `3` means PyYAML is
@@ -176,8 +177,8 @@ plt-lint does not check that images referenced by `program`/`download` exist,
 that `if:` expressions evaluate, or anything that needs a real DUT — a clean
 lint is not a passing run.
 
-If plt-lint is not available (the skill was installed without the
-bcd-agent-kit plugin), fall back to the bundled JSON Schema at
+If plt-lint cannot run (no `python3`, or PyYAML cannot be installed), say so
+and fall back to the bundled JSON Schema at
 `references/test.plan-2.7.0.schema.json` (schema version
 2.7.0) with any JSON Schema validator, plus `yamllint`.
 

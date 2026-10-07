@@ -1,6 +1,10 @@
 # plt-lint
 
-Linter for PLT (Production Line Tool) test-plan YAML files.
+Linter for PLT (Production Line Tool) test-plan YAML files. This directory
+holds the developer tooling. The linter script (`plt_lint.py`) and its command catalog
+(`plt_command_catalog.json`) live in
+[`skills/plt-test-plan-builder/scripts/`](../../skills/plt-test-plan-builder/scripts/),
+to support installation across chat and coding agents.
 
 ## What it checks
 
@@ -31,9 +35,8 @@ For every step in `setup`, `panel-setup`, `trigger`, `suite`,
    silently discards it.
 
 Every check that names a specific command is driven by `plt_command_catalog.json`.
-The catalog is generated in the upstream plt-os repository and committed here
-as a static input. When PLT commands change upstream, copy in the regenerated
-catalog and commit it.
+The catalog is generated in the upstream plt-os repository and committed
+alongside `plt_lint.py` as a static input.
 
 ### Argument type reference
 
@@ -68,13 +71,17 @@ make install-dev            # installs PyYAML, the only runtime dep
 
 ## Usage
 
-Run the script directly from the source tree:
+Run the script directly from the source tree (paths relative to the
+repo root):
 
 ```
-python3 plt_lint.py path/to/plan.yaml
-python3 plt_lint.py --strict *.yaml
-python3 plt_lint.py --json plan.yaml
+python3 skills/plt-test-plan-builder/scripts/plt_lint.py path/to/plan.yaml
+python3 skills/plt-test-plan-builder/scripts/plt_lint.py --strict *.yaml
+python3 skills/plt-test-plan-builder/scripts/plt_lint.py --json plan.yaml
 ```
+
+From this directory, `make lint FILE=path/to/plan.yaml` does the same, and
+`make test` runs the unit tests.
 
 Exit codes:
 

@@ -4,6 +4,9 @@
 
 PY ?= python3
 
+# The linter and its catalog ship inside the plt-test-plan-builder skill.
+SCRIPTS := ../../skills/plt-test-plan-builder/scripts
+
 .PHONY: help test lint install-dev clean
 
 help:
@@ -16,7 +19,7 @@ test:
 	$(PY) -m unittest discover -s tests -v
 
 lint:
-	$(PY) plt_lint.py $(FILE)
+	$(PY) $(SCRIPTS)/plt_lint.py $(FILE)
 
 install-dev:
 	$(PY) -m pip install pyyaml

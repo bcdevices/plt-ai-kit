@@ -14,7 +14,9 @@ from contextlib import redirect_stdout
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-TOOL_ROOT = HERE.parent
+# plt_lint.py and its catalog ship inside the skill so that every agent
+# surface can load them; the tests and fixtures stay here.
+TOOL_ROOT = HERE.parents[2] / "skills" / "plt-test-plan-builder" / "scripts"
 FIXTURES = HERE / "fixtures"
 
 sys.path.insert(0, str(TOOL_ROOT))
