@@ -2,7 +2,7 @@
 
 This repository contains agent skills, MCP server specs, supporting tooling, and plugin information for using coding and chat agents to drive Blue Clover Devices systems.
 
-This repository is structured as a **Claude plugin** and can be installed directly in Claude Code, claude.ai and the Claude desktop app.
+This repository is structured as a **Claude plugin** and can be installed directly in Claude Code, claude.ai and the Claude desktop app. It also carries manifests for **OpenAI Codex**.
 
 ## Install
 
@@ -37,6 +37,17 @@ Or, if you're using a local checkout:
 The plugin is saved to your account, so it is also available in Cowork and Claude Code without installing it again. In chat, Claude loads a skill when the task matches it, or you can pick one by typing `/` in the message box.
 
 Chat loads the plugin's skills only; `plt-lint` will be accessible in the `plt-test-plan-builder` skill.
+
+### Codex
+
+Add this repository as a marketplace, then install the `plt-agent-kit` plugin from the plugin browser:
+
+```
+codex plugin marketplace add bcdevices/plt-agent-kit
+codex plugin marketplace list
+```
+
+`codex plugin marketplace list` shows whether the entry resolved.
 
 ## Update
 
