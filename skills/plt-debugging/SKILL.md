@@ -12,11 +12,54 @@ When a PLT test step fails, work from what the step reports toward a cause.
 This skill collects the documented gotchas per command, a growing catalogue of
 failure modes, and which features need which PLT-OS version.
 
+## Start from the run record, when you can
+
+If PLTcloud tools are available in this session (`list_my_organizations`,
+`list_devices`, `get_device`, `get_test_history`, `get_pass_fail_history`,
+`get_device_errors`), read the failed run before asking the user to describe
+it. If they are not available, skip this section and ask for the step's
+`fail:` message, command and reported value instead.
+
+1. **Find the PLT.** `list_my_organizations` gives the organization uuid;
+   `list_devices` lists its PLTs by model and serial. If the user named the
+   PLT, match it there rather than guessing the model or serial format.
+2. **Read the failed run.** `get_test_history` for that PLT over the days in
+   question returns each report's plan, result, failing step, failure detail,
+   DUT serial, and the PLT app and runner versions. The failing step and
+   detail are what triage step 1 asks for.
+   - `INCOMPLETE` means the run never finished, including a `FAIL` with no
+     failing step. Treat it as a run that stopped, not as a step that failed
+     its check, and ask the user what interrupted it.
+3. **Look for a pattern before a cause.** `get_pass_fail_history` gives daily
+   pass, fail and incomplete counts per plan, for one PLT or the whole
+   organization:
+   - One DUT serial failing while others pass on the same PLT points at the
+     unit.
+   - Every unit failing on one PLT, while other PLTs pass the same plan,
+     points at that PLT or its fixture.
+   - A failure rate that starts on a particular day points at what changed
+     that day: a new release, a new plan, or a PLT update.
+4. **Check the PLT's own errors.** `get_device` shows the PLT's OS version,
+   release and most recent error and warning summaries; `get_device_errors`
+   pages through the full list. An error logged on the PLT around the time of
+   the failed run is often the cause. If `errors_withheld` is true, the PLT
+   has belonged to another organization and its errors can't be shown; ask
+   the user to check the PLT's own logs instead.
+
+These tools read data only. They cannot re-run a test, change a plan or
+reach the PLT itself; diagnostic steps (triage step 4) are still added to
+the plan and run on the PLT.
+
+Records are clipped (failure detail at 300 characters) and windows are
+capped at 90 days. If the detail you need is cut off, ask the user for the
+full report from the PLTcloud web console.
+
 ## Triage
 
 1. **Read the step's failure.** The `fail:` message, the command, and the
    reported value narrow the search immediately. A value near its range is a
    different problem from one wildly off or a timeout.
+   If you read the run with the PLTcloud tools above, you already have this.
 2. **Identify the subsystem** from the command that failed and open its
    gotchas file below.
 3. **Check the command's documented gotchas** in the matching
@@ -36,8 +79,11 @@ failure modes, and which features need which PLT-OS version.
    - `operator` — pause the run so a person can inspect the fixture at a
      specific point.
 5. **Match against known failure modes** in `references/failure-modes.md`.
+   The PLT's own error summaries (`get_device` / `get_device_errors`) are a
+   second source of known failures.
 6. **Rule out a version mismatch.** Get the PLT's pltOS (and agentOS or
-   flashOS) version, then check `references/version-gating.md` for a feature newer than
+   flashOS) version — from `get_device` if the PLTcloud tools are available,
+   otherwise from the user — then check `references/version-gating.md` for a feature newer than
    it or a **Fixed** row matching the failure. Releases after this skill was
    built are at https://docs.pltcloud.com/releases/ . If the fix is in a newer release,
    the remedy is to update the PLT.
