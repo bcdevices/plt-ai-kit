@@ -3,7 +3,7 @@ name: plt-test-plan-builder
 description: >-
   Create or modify Blue Clover Devices' PLT (Production Line Tool) test plans in YAML for Blue Clover. Use when writing or editing a test plan, structuring test steps, or when the user asks how to test a board, program a target, or measure a signal with a PLT. For command syntax detail and hardware limits it defers to the plt skill; for a failing step use plt-debugging.
 metadata:
-  version: "20260415.0.1-32-gce6971592"
+  version: "20261022.0.1"
 ---
 
 # Building PLT Test Plans
@@ -161,8 +161,8 @@ teardown:
 ## Validating a plan
 
 Lint every plan you write or edit with **plt-lint** before handing it back,
-and fix what it reports. It found in `scripts/plt_lint.py`, next to its command
-catalog.
+and fix what it reports. It is found in `scripts/plt_lint.py`, next to its
+command catalog.
 
 ```
 python3 <skill-dir>/scripts/plt_lint.py --strict <plan>.yaml

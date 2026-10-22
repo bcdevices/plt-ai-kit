@@ -28,6 +28,7 @@ failure is not a known, fixed issue.
 | flashr-update - Update Flashr firmware | New | agentOS 2.0.2 | `agentOS/flashr-update/` |
 | USB network interface (agentOS) | New | agentOS 2.0.2 | `agentOS/` |
 | Store-and-Forward (Edit Settings) | New | pltOS 2.3 | `pltcloud/webconsole/project/settings/basic/` |
+| PLTOS-475: Fix sporadic system lock-up within 24 hours of continuous operation | Fixed | pltOS 3.0.9 | `releases/pltOS/3.0/` |
 | PLTOS-475: Avoid stale UART FDs. Fix to avoid lingering stale open file descriptors for the UART devices for every test plan run. | Fixed | pltOS 3.0.7 | `releases/pltOS/3.0/` |
 | PLTOS-463: Fix in-app Power Off; boot with display on | Fixed | pltOS 3.0.6 | `releases/pltOS/3.0/` |
 | PLTOS-474: Fixed UART port detection when multiple USB-CDC devices were connected to the PLT-106 | Fixed | pltOS 3.0.5 | `releases/pltOS/3.0/` |

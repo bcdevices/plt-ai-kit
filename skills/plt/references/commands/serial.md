@@ -28,7 +28,7 @@ Send and Extract UART response
 
 Send text to a UART port and/or wait for a response, optionally extracting values from the response into test plan keys.
 
-If sendText is given, it is transmitted first. If expectText and/or extractText are given, the command then waits (up to timeout) for the receive buffer to contain a match; extractText is a regular expression matched against the accumulated buffer, and its capture groups are stored in the corresponding key names given by extractKey. If neither expectText nor extractText is given, the command sends and returns immediately without waiting on a response. Unless noflush is set, the receive buffer is flushed before waiting and the transmit buffer is flushed after sending.
+If sendText is given, it is transmitted first. If expectText and/or extractText are given, the command then waits (up to timeout) for the receive buffer to contain a match; extractText is a regular expression matched against the most recent line of received text (see note below), and its capture groups are stored in the corresponding key names given by extractKey. If neither expectText nor extractText is given, the command sends and returns immediately without waiting on a response. Unless noflush is set, the receive buffer is flushed before waiting and the transmit buffer is flushed after sending.
 
 ```yaml
 - command: uart <uartPort> [noflush]
@@ -52,6 +52,8 @@ If sendText is given, it is transmitted first. If expectText and/or extractText 
 | `<timeout>` | Timeout, in milliseconds, to wait for expectText/extractText to match (default: 1000ms) |
 
 Use uart for a single-step send/expect/extract exchange. For a fire-and-forget expectation set earlier and awaited later (e.g. across an intervening operator step), use uartExpect together with uartAwait instead.
+
+> **NOTE:** The extract regular expression is matched within a single line of received text. Lines before the most recent line ending are discarded as data arrives, so a pattern must not depend on a preceding line or begin with \r\n/\n. A trailing \r\n to anchor the end of the line is fine. To capture values from several lines, use one uart step per line.
 
 Examples: nRF52 DK (`samples/board/nrf52dk/`), HiFive Unmatched (`samples/board/hifive_unmatched/`), Console (`samples/linux/console/`), Nordic nRF Command Line Tools (`samples/ppcsbc/nordic-nrfjprog/`), NXP Secure Provisioning SDK (`samples/ppcsbc/nxp-spsdk/`), shell (`samples/zephyr/shell/`)
 See also: `value`, `uartAwait`, `uartCfg`, `uartExpect`, `uartReadTimeout`, UART Interaction (`TestPlanReference/uart/`)

@@ -45,7 +45,7 @@ Example: extract multiple keys at once
 ```yaml
 - command: uart UART0
   send: "\r\nkernel version\r\n"
-  extract: "\r\n(.*) version (.*)\r\n"
+  extract: "(.*) version (.*)\r\n"
   extractKey: KERNEL_NAME KERNEL_VERSION
 ```
 

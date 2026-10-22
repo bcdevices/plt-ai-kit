@@ -3,7 +3,7 @@ name: plt
 description: >-
   Reference for PLT (Production Line Tool) manufacturing test systems by Blue Clover Devices — every test plan command with its arguments and limits, PLT-106/200A/300A hardware, probes and signals, programming targets, and peripherals. Use when the user asks what a PLT command or argument does, which hardware, target or peripheral is supported, or mentions PLT, a DUT fixture, ICT or finished-goods test. For PLTcloud use plt-cloud; to write or edit a test plan use plt-test-plan-builder; to diagnose a failing step use plt-debugging.
 metadata:
-  version: "20260415.0.1-32-gce6971592"
+  version: "20261022.0.1"
 ---
 
 # PLT — Production Line Tool
