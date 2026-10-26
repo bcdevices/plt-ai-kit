@@ -1,4 +1,4 @@
-# Blue Clover Devices Agent Toolkit
+# PLT Systems AI Toolkit
 
 This repository contains agent skills, MCP server specs, supporting tooling, and plugin information for using coding and chat agents to drive Blue Clover Devices systems.
 
