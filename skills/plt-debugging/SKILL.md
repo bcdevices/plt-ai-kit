@@ -3,7 +3,7 @@ name: plt-debugging
 description: >-
   Diagnose failures when running PLT (Production Line Tool) test plans on Blue Clover Devices hardware — measurement, programming, UART, CAN and power steps that fail or behave unexpectedly. Use when a PLT test step fails, a plan behaves unexpectedly, or the user asks why a PLT measurement or programming operation is not working. Not for writing a new plan (plt-test-plan-builder) or looking up what a command does (plt).
 metadata:
-  version: "20261022.0.1"
+  version: "20261030.0.1"
 ---
 
 # Debugging PLT Test Plans

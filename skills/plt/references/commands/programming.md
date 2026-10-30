@@ -103,7 +103,7 @@ Erase and Program DUT MCU on-board flash.
 | `<uartPort>` | UART port name. Only required for UART programming targets. |
 | `<offset>` | Optional: Image Address Offset, in decimal or 0x-prefixed hexadecimal. |
 | `<img>` | Firmware File. A value of none skips that offset/image slot without error, leaving a gap in a multi-image program step. |
-| `</Users/phillip/src/bcd/plt-docs-src/docs/TestPlanReference/command/program.rst:31: (INFO/1) Unexpected possible title overline or transition. Treating it as ordinary text because it's so short. ...>` | Optional: Additional offsets, images |
+| `</home/runner/work/plt-docs/plt-docs/docs/TestPlanReference/command/program.rst:31: (INFO/1) Unexpected possible title overline or transition. Treating it as ordinary text because it's so short. ...>` | Optional: Additional offsets, images |
 | `<noerase>` | Optional: If set, DUT will not be erased prior to programming. |
 | `<usbDeviceID>` | Optional: Programming adapter USB device identifiers: VID:PID. |
 | `<usbDevicePath>` | Optional: Programming adapter USB device path: port. ... .port. |
