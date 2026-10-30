@@ -1,6 +1,6 @@
 {
   "name": "plt-ai-kit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Blue Clover Devices agent toolkit: skills and tools for coding and chat agents working with PLT manufacturing test systems.",
   "author": {
     "name": "Blue Clover Devices",
