@@ -3,7 +3,7 @@ name: plt-test-plan-builder
 description: >-
   Create or modify Blue Clover Devices' PLT (Production Line Tool) test plans in YAML for Blue Clover. Use when writing or editing a test plan, structuring test steps, or when the user asks how to test a board, program a target, or measure a signal with a PLT. For command syntax detail and hardware limits it defers to the plt skill; for a failing step use plt-debugging.
 metadata:
-  version: "20261022.0.1"
+  version: "20261030.0.2"
 ---
 
 # Building PLT Test Plans
@@ -36,6 +36,13 @@ suite:
 
 All items must pass for the plan to pass; a step fails the item if its
 command fails.
+
+### Plan header
+
+Open every plan with a comment header: a test station BOM and a wiring
+table with five columns, one row per cable:
+`Device A | Connector | Cable P/N | Connector | Device B`.
+Template and rules: `references/plan-header.md`.
 
 ### Step fields worth knowing
 
