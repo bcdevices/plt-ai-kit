@@ -1,9 +1,9 @@
 ---
 name: plt-cloud
 description: >-
-  Reference for PLTcloud, the Blue Clover Devices cloud backend - web console administration, projects, releases and deployment groups, PLT connectivity, serial number and webhook APIs, webhook signature validation, CI upload, the Hardware CI GitHub App, the Report Connector and the Slack app. Use when the user asks about PLTcloud, deploying firmware or test plans to PLTs, test reports, or implementing a webhook endpoint. For commands and hardware info use plt; to write a plan use plt-test-plan-builder.
+  Reference for PLTcloud, the Blue Clover Devices cloud backend - web console administration, projects, releases and deployment groups, PLT connectivity, serial number and webhook APIs, webhook signature validation, CI upload, the Hardware CI GitHub App, the Report Connector and the Slack app. Use when the user asks about PLTcloud, deploying firmware or test plans to PLTs, test reports, or implementing a webhook endpoint. For commands and hardware info use plt; to write a plan use plt-test-plan-builder; to run the pltutil command line tool use pltutil.
 metadata:
-  version: "20261030.0.3"
+  version: "20261030.0.4"
 ---
 
 # PLTcloud
@@ -18,7 +18,7 @@ secured connection to PLTcloud, which it uses to:
 
 Humans manage organizations, users, PLTs, projects and releases through the
 web console at https://pltcloud.com/. Releases can also be uploaded from a CI
-pipeline with the PLTcloud command line client.
+pipeline with the `pltutil` command line tool (named `pltcloud` before v0.7.4).
 
 ## Test plan commands that reach PLTcloud
 
@@ -46,6 +46,7 @@ page is a `## <title>` section with its source path.
 | Accounts, organizations, users, adding PLTs, deployment groups | `references/web-console.md` |
 | Projects, files, releases, project settings, debug keys, viewing reports | `references/projects.md` |
 | Syntax of `serial` / `webhook` steps | the `plt` skill's `references/commands/cloud.md` |
+| Running the `pltutil` command line tool | the `pltutil` skill |
 
 Page paths in this skill and its references are relative to https://docs.pltcloud.com/ — a page's URL is that base plus its path.
 

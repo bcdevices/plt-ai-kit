@@ -6,48 +6,43 @@ Uploading releases from a CI pipeline with the PLTcloud client, and running hard
 
 Source: `pltcloud/continuous-integration/`
 
-PLTcloud allows for uploading a release utilizing a command line client. This client can be included in a CI pipeline in order to automatically deploy a firmware build to PLTcloud.
+PLTcloud allows for uploading a release utilizing the pltutil (`pltutil/`) command line tool (named pltcloud before v0.7.4). This tool can be included in a CI pipeline in order to automatically deploy a firmware build to PLTcloud.
 
 **Supported Environments**
 
-The PLTcloud client is distributed as a Debian package and should work on Debian and other distributions supporting .deb files.
+The pltutil CLI (`pltutil/`) is distributed as a Debian package and should work on Debian and other distributions supporting .deb files.
 
-The PLTcloud CLI has been tested with Travis CI and GitHub Actions.
+The CLI has been tested with Travis CI and GitHub Actions.
 
 Other CI tools can be utilized as long as they run a supported OS and support the installation of custom packages.
 
-**Usage**
+See the pltutil CLI (`pltutil/`) page for downloads, usage, and command-line options.
 
-```
-pltcloud [OPTIONS...] -t <TOKEN> -v <VERSION> -p <UUID> -f <GLOB>
+**Pipeline Setup**
 
--t <TOKEN>
-        PLTcloud API Release Token
--v <VERSION>
-        Release version
--p <UUID>
-        Project UUID
--f <GLOB>
-        Files
--vvv
-        Verbose output
-```
-
-Files can be specified with patterns such as: **/prefix*, grandparent/**/child?, **/parent/*, or even just ** (which will include all files and directories recursively).
-
-Not bundled; see Example: Travis CI integration (`pltcloud/continuous-integration/#example-travis-ci-integration`).
-
-**Example: GitHub Actions**
+These steps apply to any CI tool. The examples below show how to apply them.
 
 **Prerequisites**
 
-- A GitHub account and repository containing DUT firmware image and test plans
-- Access to GitHub Actions
+- A Git repository containing DUT firmware image and test plans
+- A CI service that can build the repository
 - A PLTcloud organization, user and project
 
-**Step 1: Validate firmware build and test plans**
+**Prepare the release files**
 
-In order to upload a release, the PLT test plan, and any associated assets such as DUT firmware must be available in a directory.
+In order to upload a release, the PLT test plan, and any associated assets such as DUT firmware must be available in a directory. Configure the CI build to create or copy these files into a known directory, such as dist/.
+
+**Get the project UUID and release token**
+
+- Log in to PLTcloud and select the Project menu item from the project drop-down in the top banner.
+- Copy the UUID from the Project Details (`pltcloud/webconsole/project/detail/`) page.
+- Select API Tokens from the drop-down menu under the user menu.
+- Select Add Release Token, login and copy the Release Upload Token.
+- Store both values using the secret storage of your CI service.
+
+**Example: GitHub Actions**
+
+**Step 1: Build the firmware and test plans**
 
 Setup a GitHub Action workflow to build the firmware and copy test plans to a known directory.
 
@@ -55,13 +50,9 @@ For example, the Zephyr Action (https://github.com/bcdevices/ly10-zephyr-fw/tree
 
 in the Zephyr firmware for demo board project (https://github.com/bcdevices/ly10-zephyr-fw/) is used to build the firmware files and copy the test suites to a dist/ directory.
 
-**Step 2: Configure project and token secrets**
+**Step 2: Add the secrets**
 
-- Log in to PLTcloud and select the Project menu item from the project drop-down in the top banner.
-- Copy the UUID from the Project Details (`pltcloud/webconsole/project/detail/`) page and a secret named PROJECT_UUID in your GitHub project.
-- Select API Tokens from the drop-down menu under the user menu in PLTcloud
-- Select Add Release Token, login and copy the Release Upload Token
-- Add the release token to GitHub secrets and name it API_TOKEN
+Add the project UUID as a GitHub secret named PROJECT_UUID, and the release token as a secret named API_TOKEN.
 
 **Step 3: Update the Workflow to deploy to PLTcloud**
 
@@ -76,6 +67,8 @@ in the Zephyr firmware for demo board project (https://github.com/bcdevices/ly10
        FILES: "./dist/*demo*"
        VERSION: ${{ github.ref }}
    ```
+
+Not bundled; see Example: Travis CI integration (`pltcloud/continuous-integration/#example-travis-ci-integration`).
 
 ## PLT Hardware CI
 
