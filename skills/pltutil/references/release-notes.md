@@ -6,6 +6,18 @@ Changes per version. Use these when an installed pltutil rejects an option or be
 
 Source: `releases/pltutil/0.7/`
 
+**pltutil v0.7.7**
+
+Released 2026-11-03.
+
+Added:
+
+- pltutil is now also published for macOS (x86-64)
+
+Changed:
+
+- macOS binaries are now signed with a Developer ID certificate and notarized by Apple.
+
 **pltutil v0.7.6**
 
 Released 2026-10-31.
