@@ -23,35 +23,30 @@ To migrate an existing script or CI pipeline to the current version:
 
 **Download**
 
-The current version is v0.7.6.
+The current version is v0.7.7.
 
 | Package | Platform |
 |---|---|
-| pltutil_0.7.6_amd64.deb (https://download.pltcloud.com/cli/pltutil_0.7.6_amd64.deb) | Debian-based Linux, x86-64 |
-| pltutil_0.7.6_arm64.deb (https://download.pltcloud.com/cli/pltutil_0.7.6_arm64.deb) | Debian-based Linux, ARM64 |
-| pltutil-prod_0.7.6_linux_amd64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.6_linux_amd64.zip) | generic Linux, x86-64 |
-| pltutil-prod_0.7.6_linux_arm64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.6_linux_arm64.zip) | generic Linux, ARM64 |
-| pltutil-prod_0.7.6_darwin_arm64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.6_darwin_arm64.zip) | macOS, ARM64 |
-| pltutil-prod_0.7.6_windows_amd64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.6_windows_amd64.zip) | Microsoft Windows, x86-64 |
+| pltutil_0.7.7_amd64.deb (https://download.pltcloud.com/cli/pltutil_0.7.7_amd64.deb) | Debian-based Linux, x86-64 |
+| pltutil_0.7.7_arm64.deb (https://download.pltcloud.com/cli/pltutil_0.7.7_arm64.deb) | Debian-based Linux, ARM64 |
+| pltutil-prod_0.7.7_linux_amd64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.7_linux_amd64.zip) | generic Linux, x86-64 |
+| pltutil-prod_0.7.7_linux_arm64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.7_linux_arm64.zip) | generic Linux, ARM64 |
+| pltutil-prod_0.7.7_darwin_arm64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.7_darwin_arm64.zip) | macOS, ARM64 |
+| pltutil-prod_0.7.7_darwin_amd64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.7_darwin_amd64.zip) | macOS, x86-64 |
+| pltutil-prod_0.7.7_windows_amd64.zip (https://download.pltcloud.com/cli/pltutil-prod_0.7.7_windows_amd64.zip) | Microsoft Windows, x86-64 |
 
 Packages connect to the production PLTcloud environment. To install one:
 
 Debian-based Linux (.deb):
 
 ```console
-$ sudo apt install ./pltutil_0.7.6_amd64.deb
+$ sudo apt install ./pltutil_0.7.7_amd64.deb
 ```
 
 Other platforms (.zip): unzip the package and run the pltutil program inside it (pltutil.exe on Windows). For example, on Linux:
 
 ```console
-$ unzip pltutil-prod_0.7.6_linux_amd64.zip
-```
-
-On macOS, also remove the quarantine attribute from the extracted program before running it:
-
-```console
-$ xattr -d com.apple.quarantine pltutil
+$ unzip pltutil-prod_0.7.7_linux_amd64.zip
 ```
 
 **Authentication**
