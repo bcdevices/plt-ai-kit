@@ -1,9 +1,9 @@
 ---
 name: plt
 description: >-
-  Reference for PLT (Production Line Tool) manufacturing test systems by Blue Clover Devices — every test plan command with its arguments and limits, PLT-106/200A/300A hardware, probes and signals, programming targets, and peripherals. Use when the user asks what a PLT command or argument does, which hardware, target or peripheral is supported, or mentions PLT, a DUT fixture, ICT or finished-goods test. For PLTcloud use plt-cloud; to write or edit a test plan use plt-test-plan-builder; to diagnose a failing step use plt-debugging.
+  Reference for PLT (Production Line Tool) manufacturing test systems by Blue Clover Devices — every test plan command with its arguments and limits, PLT-106/200A/300A hardware, probes and signals, programming targets, and peripherals. Use when the user asks what a PLT command or argument does, which hardware, target or peripheral is supported, or mentions PLT, a DUT fixture, ICT or finished-goods test. To set up a new PLT use plt-setup; for PLTcloud use plt-cloud; to write or edit a test plan use plt-test-plan-builder; to diagnose a failing step use plt-debugging.
 metadata:
-  version: "20261104.0.1"
+  version: "20261104.0.2"
 ---
 
 # PLT — Production Line Tool
@@ -130,7 +130,8 @@ space in a two-word name written as an underscore (`usb_storage`).
 | How-to guides for measurement, UART, CAN, BLE, NFC, USB, operator, fixture; plan YAML and keys; design for test | the `plt-test-plan-builder` skill's `references/` |
 | A specific peripheral or sample project | `references/hardware-catalog.md` |
 | Board-specific wiring, jumpers, or programming-interface setup for a dev kit | `https://docs.pltcloud.com/samples/board/<board>.html` (fetch) |
-| PLTcloud: web console, releases and deployment, webhooks, CI upload, reports | the `plt-cloud` skill |
+| Setting up a new PLT, step by step, through a first test run | the `plt-setup` skill |
+| PLTcloud: web console, releases and deployment, webhooks, CI upload, reports, debug keys and Debug Mode (local SFTP access) | the `plt-cloud` skill |
 | Uploading and running a test plan from the command line | the `pltutil` skill |
 
 Load only the group file you need. Each command has a stable

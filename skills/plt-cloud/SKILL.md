@@ -1,9 +1,9 @@
 ---
 name: plt-cloud
 description: >-
-  Reference for PLTcloud, the Blue Clover Devices cloud backend - web console administration, projects, releases and deployment groups, PLT connectivity, serial number and webhook APIs, webhook signature validation, CI upload, the Hardware CI GitHub App, the Report Connector and the Slack app. Use when the user asks about PLTcloud, deploying firmware or test plans to PLTs, test reports, or implementing a webhook endpoint. For commands and hardware info use plt; to write a plan use plt-test-plan-builder; to run the pltutil command line tool use pltutil.
+  Reference for PLTcloud, the Blue Clover Devices cloud backend - web console administration, projects, releases and deployment groups, PLT connectivity, serial number and webhook APIs, webhook signature validation, CI upload, the Hardware CI GitHub App, the Report Connector, the Slack app, and project debug keys for Debug Mode (local SFTP access to a PLT). Use when the user asks about PLTcloud, deploying firmware or test plans to PLTs, test reports, implementing a webhook endpoint, or setting a debug key or putting a PLT in Debug Mode. For commands and hardware info use plt; to write a plan use plt-test-plan-builder; to run the pltutil command line tool use pltutil.
 metadata:
-  version: "20261104.0.1"
+  version: "20261104.0.2"
 ---
 
 # PLTcloud
@@ -44,9 +44,10 @@ page is a `## <title>` section with its source path.
 | Exporting reports (Report Connector, S3), the Slack app | `references/reports.md` |
 | Network requirements for a PLT (DHCP, DNS, firewall, NTP), service status | `references/connectivity.md` |
 | Accounts, organizations, users, adding PLTs, deployment groups | `references/web-console.md` |
-| Projects, files, releases, project settings, debug keys, viewing reports | `references/projects.md` |
+| Projects, files, releases, project settings, debug keys and Debug Mode (SFTP upload), viewing reports | `references/projects.md` |
 | Syntax of `serial` / `webhook` steps | the `plt` skill's `references/commands/cloud.md` |
 | Running the `pltutil` command line tool | the `pltutil` skill |
+| Walking a new user through setup and a first test run | the `plt-setup` skill |
 
 Page paths in this skill and its references are relative to https://docs.pltcloud.com/ — a page's URL is that base plus its path.
 

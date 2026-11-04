@@ -447,6 +447,51 @@ suite:
 - define (`TestPlanReference/command/define/`)
 - webhook (`TestPlanReference/command/webhook/`)
 
+**Plan-Wide Keys**
+
+Keys last for the whole test plan run. A key set in one suite or step, whether by define or extractKey, can be used by every later step. Defining a key again replaces its value from then on.
+
+Using Keys lets you collect a plan's settings (file names, USB VID:PID values, signal aliases, target names) in a first "Defines" suite. Later suites then refer to them only as %KEY%. This allows you to define and change settings in a single place.
+
+*PLT Test Plan: Plan-Wide Keys for a Portable Plan*
+
+```yaml
+title: "Update Test Agent"
+suite:
+  - title: "Defines"
+    steps:
+      - command: define AGENT.vidpid "6666:8001"
+      - command: define BUNDLE.filename "update.raucb"
+
+  - title: "Setup Programming Session"
+    steps:
+      - command: usb detect
+        id: "%AGENT.vidpid%"
+        timeout: 300s
+      - command: agentCfg PROGSBC
+        id: "%AGENT.vidpid%"
+        retry: 3
+        with:
+          - "%BUNDLE.filename%"
+
+  - title: "Install Update"
+    steps:
+      - command: agentExec PROGSBC "rauc install /run/pltagent/mnt/%BUNDLE.filename%"
+        timeout: 120s
+```
+
+Notes:
+
+- 6666:8001 is the default VID:PID for an agentOS Test Agent (see agentOS (`agentOS/`)). agentCfg also accepts the prefixed form vid:6666:8001, but usb detect expects the bare VID:PID. Store the bare form if both commands share the key.
+- Dotted names such as AGENT.vidpid are just a naming convention for grouping related keys. They have no special meaning.
+- Every key goes into the test report and into webhook and serial-number requests. Don't store secrets in keys.
+
+**Commands**
+
+- define (`TestPlanReference/command/define/`)
+- usb detect (`TestPlanReference/command/usb_detect/`)
+- agentCfg (`TestPlanReference/command/agentCfg/`)
+
 **Evaluating Keys**
 
 The eval (`TestPlanReference/command/eval/`) command allows keys to be referenced directly as their underlying object. This means keys are accessed as numbers, strings, or measurements, depending on their content, without needing %.

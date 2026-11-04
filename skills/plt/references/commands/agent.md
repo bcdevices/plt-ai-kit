@@ -6,6 +6,8 @@ Configure Agent
 
 To facilitate SBC interaction during production, include an x86-64 PC or an additional SBC in the test fixture.
 
+The agent is usually a Test Agent: an SBC running agentOS. See that page for more information on working with a test: its console session, file transfer to /run/pltagent/mnt, and the tools it ships with.
+
 Interaction is configured based on how the agent is attached. The command auto-detects the connection type from the attached USB device (or from the identifier format given in id:) and configures it accordingly:
 
 - USB-CDC: Configures the UART (USB-CDC, 1,000,000 baud 8N1) for an SBC running an agentOS image (for example, a PLT Test Agent), then starts a console session and optionally transfers files to its RAMDISK over USB Mass Storage.
@@ -27,10 +29,10 @@ If <handle> has not been configured yet, the first call to agentCfg creates it, 
 
 | Argument | Description |
 |---|---|
-| `<handle>` | Used to refer to this agent in further commands. |
+| `<handle>` | Name you choose for this agent. Later commands (for example agentExec) use it to refer to the agent. Any name works, as long as it has no ., /, : or whitespace. Samples use descriptive names such as PROGSBC or CAMSBC. |
 | `<uartPort>` | Optional: UART port to use, for example UART2. Defaults to the port already assigned to handle, or to the port auto-detected for a USB-CDC agent. |
 | `<retryCount>` | Optional: Number of times to retry the test step |
-| `<fileName>` | Optional: Name of file to write to the SBC. |
+| `<fileName>` | Optional: Name of file to write to the SBC. Files are placed on the agent's RAMDISK, at /run/pltagent/mnt/<fileName> on the agent; use this path in future agentExec commands. |
 | `<key>` | Optional: Key in which to store the UART port |
 | `<agentID>` | Optional: Identifies the agent. Accepts a prefixed form or a bare legacy form (see below). Defaults to 6666:8001 (USB VID:PID) when omitted. |
 | `<usbDevicePath>` | Optional: USB device path: port. … .port. |
@@ -80,10 +82,10 @@ _id: accepts either an explicit, prefixed form or a bare legacy form that is inf
 
 > **NOTE:** These bare id: forms are the older way of identifying an agent, used on a PLT-200A and by test plans written before the prefixed Agent ID formats above were added. They are still parsed heuristically (see the (bare) rows in that table) and continue to work on a PLT-200A, but new test plans should prefer the prefixed vid:/mac: forms, since the bare heuristics can be ambiguous.
 
-> **NOTE:** For Ethernet-based control, the PLT agent package should be installed on the Agent PC. pypltagent-0.1.4.noarch.deb
+> **IMPORTANT:** For Ethernet-based control, the PLT agent package must be installed on the Agent PC. pypltagent-0.1.4.noarch.deb
 
-Examples: Segger J-Link Software (`samples/ppcsbc/segger-commander/`), Nordic nRF Util (`samples/ppcsbc/nordic-nrfutil/`), RPi Camera Module (`samples/ppcsbc/rpi-camera/`)
-See also: `agentExec`, Blue Clover Test Agent PER-101 (`peripheral/ta/per-101/`)
+Examples: Segger Flasher Software (`samples/ppcsbc/segger-flasher-software/`), Nordic nRF Command Line Tools (`samples/ppcsbc/nordic-nrfjprog/`), Nordic nRF Util (`samples/ppcsbc/nordic-nrfutil/`), NXP Secure Provisioning SDK (`samples/ppcsbc/nxp-spsdk/`), RPi Camera Module (`samples/ppcsbc/rpi-camera/`), Segger J-Link Software (`samples/ppcsbc/segger-commander/`), STM8 Nucleo STM8S208R8 (`samples/board/nucleo_s208r8/`), Bento Board (`samples/board/bento/`), Microchip Explorer 16/32 (`samples/board/mcpexplorer16_32/`), nRF54L15 DK (`samples/board/nrf54L15DK/`), Console (`samples/linux/console/`), flashr-update - Update Flashr firmware (`agentOS/flashr-update/`), flashr-flash - Program a target through Flashr (`agentOS/flashr-flash/`)
+See also: `agentExec`, agentOS (`agentOS/`), Plan-wide keys (`TestPlanReference/keys/`), Blue Clover Test Agent PER-101 (`peripheral/ta/per-101/`)
 ## agentExec
 
 Execute command on Agent
@@ -108,5 +110,5 @@ Execution differs by connection type:
 | `<retryCount>` | Optional: Number of times to retry the test step |
 | `<timeout>` | Optional: Timeout waiting for the command to complete, with suffix or in milliseconds (default: 1000ms). Applies to USB-CDC (UART) agents. |
 
-Examples: RPi Camera Module (`samples/ppcsbc/rpi-camera/`), Nordic nRF Util (`samples/ppcsbc/nordic-nrfutil/`), flashr-flash - Program a target through Flashr (`agentOS/flashr-flash/`)
+Examples: Console (`samples/linux/console/`), Segger J-Link Software (`samples/ppcsbc/segger-commander/`), Nordic nRF Command Line Tools (`samples/ppcsbc/nordic-nrfjprog/`), Nordic nRF Util (`samples/ppcsbc/nordic-nrfutil/`), RPi Camera Module (`samples/ppcsbc/rpi-camera/`), STM8 Nucleo STM8S208R8 (`samples/board/nucleo_s208r8/`), Bento Board (`samples/board/bento/`), nRF54L15 DK (`samples/board/nrf54L15DK/`), flashr-update - Update Flashr firmware (`agentOS/flashr-update/`), flashr-flash - Program a target through Flashr (`agentOS/flashr-flash/`)
 See also: `agentCfg`, Blue Clover Test Agent PER-101 (`peripheral/ta/per-101/`), flashr-flash - Program a target through Flashr (`agentOS/flashr-flash/`)
