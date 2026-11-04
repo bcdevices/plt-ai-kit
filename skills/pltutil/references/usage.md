@@ -174,7 +174,7 @@ With a deployment group, the first report from any PLT counts. With -pltserial a
 
 **Use with coding agents**
 
-The -jsonp option prints log lines and the -wait-report summary as JSON objects, for use by coding agents and other tools. See also PLT AI Kit (`ai-kit/`).
+The -jsonp option prints log lines and the -wait-report summary as JSON objects, for use by coding agents and other tools. The PLT AI Kit (`ai-kit/`) includes a pltutil skill, and Chat to Chip Firmware Flashing (`chattochip/`) shows the full workflow.
 
 **Command-line options**
 

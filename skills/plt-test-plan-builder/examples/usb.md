@@ -19,6 +19,8 @@ Example ids:
 - id: "0x2e8a:0x0003" Raspberry Pi Pico in UF2 bootloader.
 - id: "0x046d:0xc080" Logitech Gaming Mouse G303.
 
+Using VID:PID, not a USB path, keeps a plan working whichever port the device is plugged into. Define the VID:PID once as a key; see Plan-Wide Keys.
+
 **USB Device Paths**
 
 PLT-300A uses USB Device Paths in cases where:
@@ -28,6 +30,8 @@ PLT-300A uses USB Device Paths in cases where:
 - The VID:PID of the device is unknown or may change.
 
 USB device paths are strings, a sequence of numbers separated by periods. The numbers are port numbers, and the sequence is the path to the target device.
+
+> **NOTE:** The port numbering below applies to the PLT-300A only. On other PLT models, such as the PLT-106, path: is not translated: it is the raw USB topology path (port chain) of the device on that unit's own USB tree. It depends on which physical port is used and on any hubs in between.To find a device's path on such a model, run a usb detect step with a timeout: while the device is connected. The step log lists every device it sees, each with its path. Where you can, identify devices by VID:PID instead (see Plan-Wide Keys).
 
 | Port | Port Number | Location |
 |---|---|---|
@@ -55,9 +59,28 @@ Example paths:
 
 **USB-CDC**
 
+A USB-CDC device shows up as a UART. Use uartCfg for a plain serial device. Use agentCfg for a Test Agent running agentOS: it opens a console session on the agent's USB-CDC port, and agentExec then runs commands on the agent.
+
 **Commands**
 
 - uartCfg (`TestPlanReference/command/uartCfg/`)
+- agentCfg (`TestPlanReference/command/agentCfg/`)
+- agentExec (`TestPlanReference/command/agentExec/`)
+
+**Examples**
+
+- Example Projects (`samples/`) > SBC-powered PPC (`samples/ppcsbc/`) > NXP Secure Provisioning SDK (`samples/ppcsbc/nxp-spsdk/`)
+- Example Projects (`samples/`) > SBC-powered PPC (`samples/ppcsbc/`) > Segger J-Link Software (`samples/ppcsbc/segger-commander/`)
+- Example Projects (`samples/`) > SBC-powered PPC (`samples/ppcsbc/`) > Segger Flasher Software (`samples/ppcsbc/segger-flasher-software/`)
+
+**USB-NET**
+
+A Test Agent connected over USB networking (a USB-Ethernet gadget or adapter) is also configured with agentCfg. The PLT derives an IPv6 link-local address from the agent's MAC address. Select the agent with id: vid:<VID>:<PID>, id: mac:<address>, or id: vid:<VID>:<PID>:mac:<address> (see agentCfg ID formats).
+
+**Commands**
+
+- agentCfg (`TestPlanReference/command/agentCfg/`)
+- agentExec (`TestPlanReference/command/agentExec/`)
 
 **USB-MSC**
 

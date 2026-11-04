@@ -58,7 +58,7 @@ Exact descriptor index:
 
 > **NOTE:** If neither usbDeviceID nor usbDevicePath is set, path: "1" (The DUT USB-C Port) is used.
 
-See also: `usb power`, `usb reset`, `usb storage`, `uartCfg`, USB Interaction (`TestPlanReference/usb/`)
+See also: `usb power`, `usb reset`, `usb storage`, `uartCfg`, USB Interaction (`TestPlanReference/usb/`), Plan-wide keys (`TestPlanReference/keys/`)
 ## usb power
 
 USB Port Power Control

@@ -13,7 +13,7 @@ columns, one row per cable, so it maps 1:1 to a YAML list of records:
 # SKU-6  | PLT-106              | Production Line Tool
 # SKU-7  | PER-101              | Test Agent
 # SKU-28 | PER-401              | Flashr
-# SUB-67 | Bento Board 2        | Device Under Test
+# SUB-67 | Bento Board          | Device Under Test
 
 # -----------------------------------------------------------------------------
 # Test Station Diagram (TSD)
