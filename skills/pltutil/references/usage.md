@@ -172,8 +172,6 @@ With a deployment group, the first report from any PLT counts. With -pltserial a
 
 > **IMPORTANT:** -wait-report exits with code 0 whenever it receives a report, including a failing one. To act on the test result in a script, read pass_fail from the output. A timeout exits with code 1, and an interrupt exits with code 130.
 
-> **NOTE:** Waiting for reports and single-PLT deployment require matching PLTcloud server support, which may not yet be enabled in the production environment.
-
 **Use with coding agents**
 
 The -jsonp option prints log lines and the -wait-report summary as JSON objects, for use by coding agents and other tools. See also PLT AI Kit (`ai-kit/`).
