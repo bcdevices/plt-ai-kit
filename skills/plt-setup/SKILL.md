@@ -3,7 +3,7 @@ name: plt-setup
 description: >-
   Walk a new Blue Clover Devices user step by step from an unboxed PLT to a first test run: hardware and wiring, PLTcloud account, PLT enrollment, project and deployment group, first release, and running the plan. Use when the user wants to get started with a PLT or PLTcloud, or asks what to do first. For reference on an existing setup use plt or plt-cloud; to write a plan use plt-test-plan-builder; for a failing step use plt-debugging.
 metadata:
-  version: "20261104.0.2"
+  version: "20261104.0.3"
 ---
 
 # PLT Setup
