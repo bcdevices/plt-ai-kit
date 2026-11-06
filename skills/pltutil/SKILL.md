@@ -3,7 +3,7 @@ name: pltutil
 description: >-
   Drive pltutil, the Blue Clover Devices PLTcloud command line tool. Install it, validate an API token and project access, upload a release, deploy to a deployment group or a single PLT, wait for a test report, and clear a PLT's direct target. Use when the user wants to run a test plan on a PLT from a terminal or coding agent, or asks about pltutil or its options. For the PLTcloud web console or CI setup use plt-cloud; to write a plan use plt-test-plan-builder.
 metadata:
-  version: "20261104.0.2"
+  version: "3.0.1"
 ---
 
 # pltutil

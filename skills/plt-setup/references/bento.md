@@ -17,6 +17,9 @@ The Bento Board is a demo harware target for Blue Clover's "postcard demo": a sm
 - A debug probe (Flashr PER-401 (`peripheral/prog/per-401/`), or a SEGGER J-Link) programs the RP2350B over SWD
 - The Bento Board is the Device Under Test (DUT)
 
+- Getting Started (`getting-started/`) walks you from unboxing to your first test run, using the Bento Board as the example DUT.
+- Chat to Chip Firmware Flashing (`chattochip/`) shows how to go from a conversation with a coding agent to firmware flashed onto the Bento Board.
+
 **Peripherals**
 
 Bento peripherals: RP2350B MCU, ESP32-C3 RF SoC, addressable RGB LEDs (WS2812), buzzer, 5 V relay, environmental sensor (BME280), Qwiic, mikroBUS, and USB Type-C.
