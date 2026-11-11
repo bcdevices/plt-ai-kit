@@ -38,6 +38,12 @@ The plugin is saved to your account, so it is also available in Cowork and Claud
 
 Chat loads the plugin's skills only; `plt-lint` will be accessible in the `plt-test-plan-builder` skill.
 
+### PLT MCP server
+
+The Claude Code plugin also declares `plt-mcp`, an MCP server that gives the agent PLTcloud tools acting as you: your organizations, PLTs, releases and test results, and uploading and deploying releases to allowed test deployment groups. The `plt-mcp` skill tells the agent how to use it.
+
+After installing, run `/mcp`, pick `plt-mcp` and sign in with your PLTcloud account. Sign-in uses local port 8765. The server is being enabled one organization at a time, so you may not see every organization you belong to.
+
 ### Codex
 
 Add this repository as a marketplace, then install the `plt-ai-kit` plugin from the plugin browser:
