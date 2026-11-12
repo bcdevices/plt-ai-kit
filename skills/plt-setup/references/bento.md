@@ -79,7 +79,7 @@ blinky:~$ version
 
 **YAML test plan**
 
-Program the RP2350B with bento_blinky.hex, available from the v1.0.1 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.1). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
+Program the RP2350B with bento_blinky.hex, available from the v1.0.2 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.2). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
 
 ```yaml
 title: "Bento Flashing Demo"
@@ -143,7 +143,7 @@ suite:
 
 **YAML test plan**
 
-Program the RP2350B with bento_blinky.hex, available from the v1.0.1 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.1). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
+Program the RP2350B with bento_blinky.hex, available from the v1.0.2 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.2). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
 
 ```yaml
 title: "Bento Flashing Demo"

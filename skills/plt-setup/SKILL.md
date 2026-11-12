@@ -3,7 +3,7 @@ name: plt-setup
 description: >-
   Walk a new Blue Clover Devices user step by step from an unboxed PLT to a first test run: hardware and wiring, PLTcloud account, PLT enrollment, project and deployment group, first release, and running the plan. Use when the user wants to get started with a PLT or PLTcloud, or asks what to do first. For reference on an existing setup use plt or plt-cloud; to write a plan use plt-test-plan-builder; for a failing step use plt-debugging.
 metadata:
-  version: "3.0.1"
+  version: "3.1.1"
 ---
 
 # PLT Setup
@@ -90,7 +90,7 @@ A release is a test plan plus the files it needs.
 these URLs, because a GitHub `blob` page URL returns HTML instead of the file:
 
 ```console
-curl -fLO https://github.com/bcdevices/bento-zephyr-fw/releases/download/v1.0.1/bento_blinky.hex
+curl -fLO https://github.com/bcdevices/bento-zephyr-fw/releases/download/v1.0.2/bento_blinky.hex
 curl -fLO https://raw.githubusercontent.com/bcdevices/test-plans/main/bento/bento-flashr-blinky.yaml
 ```
 
