@@ -44,7 +44,7 @@ A project holds your files and releases. A deployment group is a set of PLTs tha
 
 A release combines a test plan with the files it needs. For the Bento Board:
 
-1. Download bento_blinky.hex (https://github.com/bcdevices/bento-zephyr-fw/releases/download/v1.0.1/bento_blinky.hex) from the v1.0.1 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.1).
+1. Download bento_blinky.hex (https://github.com/bcdevices/bento-zephyr-fw/releases/download/v1.0.2/bento_blinky.hex) from the v1.0.2 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.2).
 2. Download the test plan, bento-flashr-blinky.yaml (https://github.com/bcdevices/test-plans/blob/main/bento/bento-flashr-blinky.yaml). It waits for the Test Agent, sends it the firmware, and programs the board:
 
    ```yaml

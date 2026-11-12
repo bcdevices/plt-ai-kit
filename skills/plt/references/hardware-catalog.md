@@ -82,6 +82,7 @@ Peripherals and sample projects with their documentation pages. Load this when t
 - STM32 Nucleo F207ZG — `samples/board/nucleo_f207zg/`
 - STM32 Nucleo F302R8 — `samples/board/nucleo_f302r8/`
 - STM32 Nucleo F401RE — `samples/board/nucleo_f401re/`
+- STM32 Nucleo F439ZI — `samples/board/nucleo_f439zi/`
 - STM32 Nucleo G071RB — `samples/board/nucleo_g071rb/`
 - STM32 Nucleo G474RE — `samples/board/nucleo_g474re/`
 - STM32 Nucleo H753ZI — `samples/board/nucleo_h753zi/`
