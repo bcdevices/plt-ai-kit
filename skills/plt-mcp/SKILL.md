@@ -3,7 +3,7 @@ name: plt-mcp
 description: >-
   Use the PLT MCP server's tools to work with PLTcloud as the signed-in user: list organizations, projects, PLTs, deployment groups and releases, upload a test plan and firmware as a release, deploy it to an allowed test deployment group, and read the test results and history. Use when the pltcloud___ or pltdata___ tools are available and the user wants to run a test plan on a PLT, send firmware or a plan to PLTcloud, or look up PLTs, releases or test results. To run the command line tool instead use pltutil; to write a plan use plt-test-plan-builder; to diagnose a failing step use plt-debugging.
 metadata:
-  version: "3.1.1"
+  version: "3.1.2"
 ---
 
 # PLT MCP server

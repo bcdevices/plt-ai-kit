@@ -51,6 +51,33 @@ bento:~$ app version
 bento:~$ app build-version
 ```
 
+**Peripheral commands**
+
+The app shell also drives the board peripherals with bento commands:
+
+| Command | Response / effect |
+|---|---|
+| bento buzzer beep [freq_hz] [duration_ms] | Sounds a tone; blocks until it ends. |
+| bento buzzer sweep | Plays the startup note sweep. |
+| bento buzzer play [twinkle \| ode \| "<rtttl>"] | Plays a tune and blocks until it finishes, then prints played <n> notes. Added in v1.0.3. |
+| bento ledstrip set <r> <g> <b> / bento ledstrip off | Sets the WS2812 LEDs (0–255 per channel), or turns them off. |
+| bento sensor read | Reads the BME280 (temperature, humidity, pressure). |
+
+bento buzzer play takes a built-in tune name or a quoted RTTTL (https://en.wikipedia.org/wiki/Ring_Tone_Text_Transfer_Language) string. With no argument it plays twinkle.
+
+- twinkle: Twinkle, Twinkle, Little Star, 14 notes, about 8 s
+- ode: Ode to Joy (opening), 15 notes, about 7 s
+- RTTTL: "name:d=4,o=5,b=120:c,d,e". Any argument containing : is parsed as RTTTL. The firmware accepts command lines of up to 512 bytes (about 100 notes) and tunes of up to 256 notes.
+
+```shell
+bento:~$ bento buzzer play ode
+played 15 notes
+bento:~$ bento buzzer play "scale:d=8,o=5,b=180:c,d,e,f,g,a,b,c6"
+played 8 notes
+```
+
+n counts rests (p) as notes. The whole string is parsed before anything plays, so a malformed tune produces bad rtttl: <reason> at char <pos> and no sound. An unknown name lists the built-in tunes. A test plan can match on played <n> notes to confirm the firmware played the tune. The buzzer has no feedback path to the PLT, so that match cannot confirm that sound came out. Example plans are bento/bento-app-buzzer-*.yaml in bcdevices/test-plans (https://github.com/bcdevices/test-plans).
+
 The blinky image also exposes a Zephyr shell over USB CDC-ACM (prompt blinky:~$). Query the application, build, Zephyr, and board versions with:
 
 ```shell
@@ -79,7 +106,7 @@ blinky:~$ version
 
 **YAML test plan**
 
-Program the RP2350B with bento_blinky.hex, available from the v1.0.2 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.2). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
+Program the RP2350B with bento_blinky.hex, available from the v1.0.3 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.3). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
 
 ```yaml
 title: "Bento Flashing Demo"
@@ -143,7 +170,7 @@ suite:
 
 **YAML test plan**
 
-Program the RP2350B with bento_blinky.hex, available from the v1.0.2 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.2). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
+Program the RP2350B with bento_blinky.hex, available from the v1.0.3 firmware release (https://github.com/bcdevices/bento-zephyr-fw/releases/tag/v1.0.3). Add bento_blinky.hex to the PLTcloud project alongside the test plan.
 
 ```yaml
 title: "Bento Flashing Demo"
